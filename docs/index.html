@@ -1,0 +1,1486 @@
+<html>
+<head>
+	    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Comunica GeoSPARQL Test</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+<link href="https://cdn.jsdelivr.net/npm/@zazuko/yasgui@4.6.1/build/yasgui.min.css" rel="stylesheet">
+<link href="yasguigeo.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@zazuko/yasgui@4.6.1/build/yasgui.min.js"></script>
+<script src="yasguigeo.js"></script>	
+<script src="yasgui-3d.js"></script>	
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integGrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+	<script src="comunica-browser.js"></script>
+<script>
+    geof={
+		"http://www.opengis.net/def/function/geosparql/ext/above":"geofext:above",
+		"http://www.opengis.net/def/function/geosparql/area":"geof:area",
+		"http://www.opengis.net/def/function/geosparql/asDGGS":"geof:asDGGS",
+		"http://www.opengis.net/def/function/geosparql/ext/asGeoCode":"geofext:asGeoCode",
+		"http://www.opengis.net/def/function/geosparql/asGeoJSON":"geof:asGeoJSON",
+		"http://www.opengis.net/def/function/geosparql/ext/asGLTF":"geofext:asGLTF",
+		"http://www.opengis.net/def/function/geosparql/asGML":"geof:asGML",
+		"http://www.opengis.net/def/function/geosparql/ext/asJSONFG":"geofext:asJSONFG",
+		"http://www.opengis.net/def/function/geosparql/asKML":"geof:asKML",
+        "http://www.opengis.net/def/function/geosparql/ext/asOBJ":"geofext:asOBJ",
+		"http://www.opengis.net/def/function/geosparql/ext/asPLY":"geofext:asPLY",
+		"http://www.opengis.net/def/function/geosparql/ext/asSTL":"geofext:asSTL",
+        "http://www.opengis.net/def/function/geosparql/asWKT":"geof:asWKT",
+		"http://www.opengis.net/def/function/geosparql/ext/asWKB":"geofext:asWKB",
+		"http://www.opengis.net/def/function/geosparql/ext/below":"geofext:below",
+		"http://www.opengis.net/def/function/geosparql/ext/boundingDiagonal":"geofext:boundingDiagonal",
+		"http://www.opengis.net/def/function/geosparql/boundary":"geof:boundary",
+        "http://www.opengis.net/def/function/geosparql/buffer":"geof:buffer",
+        "http://www.opengis.net/def/function/geosparql/centroid":"geof:centroid",
+		"http://www.opengis.net/def/function/geosparql/ext/clipByRect":"geofext:clipByRect",
+		"http://www.opengis.net/def/function/geosparql/ext/closestPoint":"geofext:closestPoint",
+        "http://www.opengis.net/def/function/geosparql/ext/compactnessRatio":"geofext:compactnessRatio",
+		"http://www.opengis.net/def/function/geosparql/concaveHull":"geof:concaveHull",
+		"http://www.opengis.net/def/function/geosparql/convexHull":"geof:convexHull",
+		"http://www.opengis.net/def/function/geosparql/coordinateDimension":"geof:coordinateDimension",
+		"http://www.opengis.net/def/function/geosparql/difference":"geof:difference",
+        "http://www.opengis.net/def/function/geosparql/distance":"geof:distance",
+		"http://www.opengis.net/def/function/geosparql/ehContains":"geof:ehContains",
+		"http://www.opengis.net/def/function/geosparql/ehCoveredBy":"geof:ehCoveredBy",
+		"http://www.opengis.net/def/function/geosparql/ehCovers":"geof:ehCovers",
+		"http://www.opengis.net/def/function/geosparql/ehDisjoint":"geof:ehDisjoint",
+		"http://www.opengis.net/def/function/geosparql/ehEquals":"geof:ehEquals",
+		"http://www.opengis.net/def/function/geosparql/ehInside":"geof:ehInside",
+		"http://www.opengis.net/def/function/geosparql/ehMeet":"geof:ehMeet",
+		"http://www.opengis.net/def/function/geosparql/ehOverlap":"geof:ehOverlap",
+		"http://www.opengis.net/def/function/geosparql/ext/endPoint":"geofext:endPoint",
+		"http://www.opengis.net/def/function/geosparql/envelope":"geof:envelope",
+		"http://www.opengis.net/def/function/geosparql/ext/force2D":"geofext:force2D",
+		"http://www.opengis.net/def/function/geosparql/ext/force3D":"geofext:force3D",
+		"http://www.opengis.net/def/function/geosparql/geometryN":"geof:geometryN",
+		"http://www.opengis.net/def/function/geosparql/geometryType":"geof:geometryType",
+		"http://www.opengis.net/def/function/geosparql/getSRID":"geof:getSRID",
+		"http://www.opengis.net/def/function/geosparql/intersection":"geof:intersection",
+		"http://www.opengis.net/def/function/geosparql/is3D":"geof:is3D",
+		"http://www.opengis.net/def/function/geosparql/ext/isCCW":"geofext:isCCW",
+		"http://www.opengis.net/def/function/geosparql/ext/isConcave":"geofext:isConcave",
+		"http://www.opengis.net/def/function/geosparql/isClosed":"geof:isClosed",
+		"http://www.opengis.net/def/function/geosparql/ext/isCollection":"geofext:isCollection",
+		"http://www.opengis.net/def/function/geosparql/ext/isCW":"geofext:isCW",
+		"http://www.opengis.net/def/function/geosparql/isEmpty":"geof:isEmpty",
+		"http://www.opengis.net/def/function/geosparql/ext/isRing":"geofext:isRing",
+		"http://www.opengis.net/def/function/geosparql/isSimple":"geof:isSimple",
+		"http://www.opengis.net/def/function/geosparql/length":"geof:length",
+		"http://www.opengis.net/def/function/geosparql/ext/isTriangle":"geofext:isTriangle",
+		"http://www.opengis.net/def/function/geosparql/ext/isValid":"geofext:isValid",
+		"http://www.opengis.net/def/function/geosparql/ext/leftOf":"geofext:leftOf",
+		"http://www.opengis.net/def/function/geosparql/ext/longestLine":"geofext:longestLine",
+		"http://www.opengis.net/def/function/geosparql/ext/maxDistance":"geofext:maxDistance",
+		"http://www.opengis.net/def/function/geosparql/maxX":"geof:maxX",
+        "http://www.opengis.net/def/function/geosparql/maxY":"geof:maxY",
+        "http://www.opengis.net/def/function/geosparql/maxZ":"geof:maxZ",
+        "http://www.opengis.net/def/function/geosparql/metricArea":"geof:metricArea",
+		"http://www.opengis.net/def/function/geosparql/metricBuffer":"geof:metricBuffer",
+		"http://www.opengis.net/def/function/geosparql/metricDistance":"geof:metricDistance",
+		"http://www.opengis.net/def/function/geosparql/metricLength":"geof:metricLength",
+		"http://www.opengis.net/def/function/geosparql/metricPerimeter":"geof:metricPerimeter",
+		"http://www.opengis.net/def/function/geosparql/metricWithinDistance":"geof:metricWithinDistance",
+        "http://www.opengis.net/def/function/geosparql/minX":"geof:minX",
+        "http://www.opengis.net/def/function/geosparql/minY":"geof:minY",
+        "http://www.opengis.net/def/function/geosparql/minZ":"geof:minZ",
+		"http://www.opengis.net/def/function/geosparql/numGeometries":"geof:numGeometries",
+		"http://www.opengis.net/def/function/geosparql/numPoints":"geof:numPoints",
+		"http://www.opengis.net/def/function/geosparql/ext/offsetCurve":"geofext:offsetCurve",
+		"http://www.opengis.net/def/function/geosparql/ext/pointInsideCircle":"geofext:pointInsideCircle",
+		"http://www.opengis.net/def/function/geosparql/ext/pointN":"geofext:pointN",
+		"http://www.opengis.net/def/function/geosparql/ext/pointOnSurface":"geofext:pointOnSurface",
+		"http://www.opengis.net/def/function/geosparql/ext/reverse":"geofext:reverse",
+		"http://www.opengis.net/def/function/geosparql/rcc8dc":"geof:rcc8dc",
+		"http://www.opengis.net/def/function/geosparql/rcc8ec":"geof:rcc8ec",
+		"http://www.opengis.net/def/function/geosparql/rcc8eq":"geof:rcc8eq",
+		"http://www.opengis.net/def/function/geosparql/rcc8ntpp":"geof:rcc8ntpp",
+		"http://www.opengis.net/def/function/geosparql/rcc8ntppi":"geof:rcc8ntppi",
+		"http://www.opengis.net/def/function/geosparql/rcc8po":"geof:rcc8po",
+		"http://www.opengis.net/def/function/geosparql/rcc8tpp":"geof:rcc8tpp",
+		"http://www.opengis.net/def/function/geosparql/rcc8tppi":"geof:rcc8tppi",
+		"http://www.opengis.net/def/function/geosparql/ext/removePoint":"geofext:removePoint",
+		"http://www.opengis.net/def/function/geosparql/ext/removeRepeatedPoints":"geofext:removeRepeatedPoints",
+		"http://www.opengis.net/def/function/geosparql/ext/rightOf":"geofext:rightOf",
+        "http://www.opengis.net/def/function/geosparql/ext/rotate":"geofext:rotate",
+        "http://www.opengis.net/def/function/geosparql/ext/scale":"geofext:scale",
+		"http://www.opengis.net/def/function/geosparql/ext/shortestLine":"geofext:shortestLine",
+		"http://www.opengis.net/def/function/geosparql/ext/selfIntersections":"geofext:selfIntersections",
+		"http://www.opengis.net/def/function/geosparql/ext/setPoint":"geofext:setPoint",
+		"http://www.opengis.net/def/function/geosparql/sfContains":"geof:sfContains",
+		"http://www.opengis.net/def/function/geosparql/sfCrosses":"geof:sfCrosses",
+		"http://www.opengis.net/def/function/geosparql/sfDisjoint":"geof:sfDisjoint",
+		"http://www.opengis.net/def/function/geosparql/sfEquals":"geof:sfEquals",
+		"http://www.opengis.net/def/function/geosparql/sfIntersects":"geof:sfIntersects",
+		"http://www.opengis.net/def/function/geosparql/sfTouches":"geof:sfTouches",
+		"http://www.opengis.net/def/function/geosparql/sfWithin":"geof:sfWithin",
+		"http://www.opengis.net/def/function/geosparql/ext/shortestLine":"geofext:shortestLine",
+		"http://www.opengis.net/def/function/geosparql/ext/simplify":"geofext:simplify",
+		"http://www.opengis.net/def/function/geosparql/ext/smooth":"geofext:smooth",
+        "http://www.opengis.net/def/function/geosparql/spatialDimension":"geof:spatialDimension",
+		"http://www.opengis.net/def/function/geosparql/ext/startPoint":"geofext:startPoint",
+        "http://www.opengis.net/def/function/geosparql/symDifference":"geof:symDifference",
+		"http://www.opengis.net/def/function/geosparql/transform":"geof:transform",
+		"http://www.opengis.net/def/function/geosparql/transformCRS84":"geofext:transformCRS84",
+        "http://www.opengis.net/def/function/geosparql/ext/translate":"geofext:translate",
+		"http://www.opengis.net/def/function/geosparql/ext/withinDistance":"geofext:withinDistance",
+		"http://www.opengis.net/def/function/geosparql/ext/X":"geofext:X",
+		"http://www.opengis.net/def/function/geosparql/ext/Y":"geofext:Y",
+		"http://www.opengis.net/def/function/geosparql/ext/Z":"geofext:Z"
+    }
+	geofqueries={
+"http://www.opengis.net/def/function/geosparql/ext/above":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?abovee) as ?above) (xsd:boolean(?nabovee) as ?notabove)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  BIND("Polygon((-83.3 33.0, -83.1 33.0, -83.1 33.2, -83.3 33.2, -83.3 33.0))"^^geo:wktLiteral AS ?geom2)
+  BIND (geof:above(?geom1, ?geom2) as ?nabovee)
+  BIND (geof:above(?geom2, ?geom1) as ?abovee)
+}`,
+"http://www.opengis.net/def/function/geosparql/area":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?area
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:area(?aLiteral,"http://qudt.org/vocab/unit/AC"^^xsd:anyURI) as ?area)
+}`,
+"http://www.opengis.net/def/function/geosparql/asDGGS":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?asDGGS
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:asDGGS(?aLiteral,"https://h3geo.org/res/7") as ?asDGGS)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/asGeoCode":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?asOLC ?asGeoURI ?asGeoHash
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:asGeoCode(?aLiteral,"http://opengis.net/ont/geocode/OpenLocationCode") as ?asOLC)
+  BIND (geof:asGeoCode(?aLiteral,"http://opengis.net/ont/geocode/GeoURI") as ?asGeoURI)
+  BIND (geof:asGeoCode(?aLiteral,"http://opengis.net/ont/geocode/GeoHash") as ?asGeoHash)
+}`,
+"http://www.opengis.net/def/function/geosparql/asGeoJSON":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?asGeoJSON
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:asGeoJSON(?aLiteral) as ?asGeoJSON)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/asGLTF":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?asGLTF
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:asGLTF(?aLiteral) as ?asGLTF)
+}`,
+"http://www.opengis.net/def/function/geosparql/asGML":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?asGML
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:asGML(?aLiteral) as ?asGML)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/asJSONFG":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?asJSONFG
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:asJSONFG(?aLiteral) as ?asJSONFG)
+}`,
+"http://www.opengis.net/def/function/geosparql/asKML":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?asKML
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:asKML(?aLiteral) as ?asKML)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/asOBJ":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?obj
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:asOBJ(?literal) AS ?obj)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/asPLY":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?ply
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:asPLY(?literal) AS ?ply)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/asSTL":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?stl
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:asSTL(?literal) AS ?stl)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/asWKB":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?asWKB
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:asWKB(?aLiteral) as ?asWKB)
+}`,
+"http://www.opengis.net/def/function/geosparql/asWKT":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?asWKT
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:asWKT(?aLiteral) as ?asWKT)
+}`,
+"http://www.opengis.net/def/function/geosparql/azimuth":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?azimuth
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:azimuth(?aLiteral) as ?azimuth)
+}`,		
+"http://www.opengis.net/def/function/geosparql/ext/below":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?beloww) as ?below) (xsd:boolean(?nbeloww) as ?notbelow)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  BIND("Polygon((-83.3 33.0, -83.1 33.0, -83.1 33.2, -83.3 33.2, -83.3 33.0))"^^geo:wktLiteral AS ?geom2)
+  BIND (geof:below(?geom1, ?geom2) as ?nbeloww)
+  BIND (geof:below(?geom2, ?geom1) as ?beloww)
+}`,
+"http://www.opengis.net/def/function/geosparql/buffer":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?buffer
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:buffer(?aLiteral,"5.0"^^xsd:double,<http://www.ontology-of-units-of-measure.org/resource/om-2/meter>) as ?buffer)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/boundingDiagonal":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?boundingDiagonal
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:boundingDiagonal(?aLiteral) as ?boundingDiagonal)
+}`,
+"http://www.opengis.net/def/function/geosparql/boundary":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?boundary
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:boundary(?aLiteral) as ?boundary)
+}`,
+"http://www.opengis.net/def/function/geosparql/centroid":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?centroid
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:centroid(?literal) AS ?centroid)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/clipByRect":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+SELECT ?literal ?clipped ?bbox
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND("POLYGON(-83.2 34.1, -83.2 34.5, -83.4 34.3 -83.2 34.1)"^^geo:wktLiteral AS ?bbox)
+  BIND(geof:clipByRect(?literal,?bbox) AS ?clipped)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/closestPoint":`
+PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?dLiteral ?cPoint
+WHERE {
+  my:A my:hasPointGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  my:D geo:hasDefaultGeometry ?dGeom .
+  ?dGeom geo:asWKT ?dLiteral .
+  BIND (geof:closestPoint(?aLiteral, ?dLiteral) as ?cPoint)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/compactnessRatio":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+SELECT ?literal ?cratio
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:compactnessRatio(?literal) AS ?cratio)
+}`,
+"http://www.opengis.net/def/function/geosparql/concaveHull":`
+PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?cchull
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:concaveHull(?aLiteral) as ?cchull)
+}`,
+"http://www.opengis.net/def/function/geosparql/convexHull":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?chull
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:convexHull(?literal) AS ?chull)
+}`,
+"http://www.opengis.net/def/function/geosparql/coordinateDimension":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?coordinateDimension
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:coordinateDimension(?literal) AS ?coordinateDimension)
+}`,
+"http://www.opengis.net/def/function/geosparql/difference":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?dLiteral ?difference
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  my:D geo:hasDefaultGeometry ?dGeom .
+  ?dGeom geo:asWKT ?dLiteral .
+  BIND (geof:difference(?aLiteral, ?dLiteral) as ?difference)
+}`,
+"http://www.opengis.net/def/function/geosparql/dimension":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?coordinateDimension
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:dimension(?literal) AS ?coordinateDimension)
+}`,
+"http://www.opengis.net/def/function/geosparql/distance":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 ?distance
+WHERE {
+  my:C geo:hasDefaultGeometry ?cGeom .
+  ?cGeom geo:asWKT ?geom1 .
+  my:F geo:hasDefaultGeometry ?fGeom .
+  ?fGeom geo:asWKT ?geom2 .
+  BIND (geof:distance(?geom1, ?geom2,"http://www.opengis.net/def/uom/OGC/1.0/meter"^^xsd:anyURI) as ?distance)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/endPoint":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?endPoint
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:endPoint(?literal) AS ?endPoint)
+}`,
+"http://www.opengis.net/def/function/geosparql/ehContains":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?ehContains) as ?contains) (xsd:boolean(?ehNotContains) as ?NotContains)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:F geo:hasDefaultGeometry ?fGeom .
+  ?fGeom geo:asWKT ?geom2 .
+  BIND (geof:ehContains(?geom1, ?geom2) as ?ehContains)
+  BIND (geof:ehContains(?geom2, ?geom1) as ?ehNotContains)
+}`,
+"http://www.opengis.net/def/function/geosparql/ehCovers":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?ehCovers) as ?covers) (xsd:boolean(?ehNotCovers) as ?NotCovers)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:B geo:hasDefaultGeometry ?bGeom .
+  ?bGeom geo:asWKT ?geom2 .
+  BIND (geof:ehCovers(?geom1, ?geom2) as ?ehCovers)
+  BIND (geof:ehCovers(?geom2, ?geom1) as ?ehNotCovers)
+}`,
+"http://www.opengis.net/def/function/geosparql/ehCoveredBy":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?ehCoveredBy) as ?coveredBy) (xsd:boolean(?ehNotCoveredBy) as ?NotCoveredBy)
+WHERE {
+  my:B geo:hasDefaultGeometry ?bGeom .
+  ?bGeom geo:asWKT ?geom1 .
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom2 .
+  BIND (geof:ehCoveredBy(?geom1, ?geom2) as ?ehCoveredBy)
+  BIND (geof:ehCoveredBy(?geom2, ?geom1) as ?ehNotCoveredBy)
+}`,
+"http://www.opengis.net/def/function/geosparql/ehDisjoint":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?ehNotDisjoint) as ?NotDisjoint) (xsd:boolean(?ehDisjoint) as ?disjoint)
+WHERE {
+  my:B geo:hasDefaultGeometry ?bGeom .
+  ?bGeom geo:asWKT ?geom1 .
+  my:C geo:hasDefaultGeometry ?cGeom .
+  ?cGeom geo:asWKT ?geom2 .
+  BIND (geof:ehDisjoint(?geom1, ?geom1) as ?ehNotDisjoint)
+  BIND (geof:ehDisjoint(?geom1, ?geom2) as ?ehDisjoint)
+}`,
+"http://www.opengis.net/def/function/geosparql/ehEquals":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?ehEquals) as ?equals) (xsd:boolean(?ehNotEquals) as ?NotEquals)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:B geo:hasDefaultGeometry ?bGeom .
+  ?bGeom geo:asWKT ?geom2 .
+  BIND (geof:ehEquals(?geom1, ?geom1) as ?ehEquals)
+  BIND (geof:ehEquals(?geom1, ?geom2) as ?ehNotEquals)
+}`,
+"http://www.opengis.net/def/function/geosparql/ehInside":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?insidee) as ?inside)
+WHERE {
+  my:F geo:hasDefaultGeometry ?fGeom .
+  ?fGeom geo:asWKT ?geom1 .
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom2 .
+  BIND (geof:ehInside(?geom1, ?geom2) as ?insidee)
+}`,
+"http://www.opengis.net/def/function/geosparql/ehMeet":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?ehMeet) as ?meet)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:C geo:hasDefaultGeometry ?cGeom .
+  ?cGeom geo:asWKT ?geom2 .
+  BIND (geof:ehMeet(?geom1, ?geom2) as ?ehMeet)
+}`,
+"http://www.opengis.net/def/function/geosparql/ehOverlap":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?ehOverlap) as ?overlap)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:D geo:hasDefaultGeometry ?dGeom .
+  ?dGeom geo:asWKT ?geom2 .
+  BIND (geof:ehOverlap(?geom1, ?geom2) as ?ehOverlap)
+}`,
+"http://www.opengis.net/def/function/geosparql/envelope":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?envelope
+WHERE {
+  my:EExactGeom geo:asWKT ?literal .
+  BIND(geof:envelope(?literal) AS ?envelope)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/force2D":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+SELECT ?literal ?force2D
+WHERE {
+  my:NExactGeom geo:asWKT ?literal .
+  BIND(geof:force2D(?literal) AS ?force2D)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/force3D":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+SELECT ?literal ?force3D
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:force3D(?literal,"5.0"^^xsd:double) AS ?force3D)
+}`,
+"http://www.opengis.net/def/function/geosparql/geometryN":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?geomN
+WHERE {
+  BIND("MULTIPOLYGON (((1 1, 1 3, 3 3, 3 1, 1 1)), ((4 3, 6 3, 6 1, 4 1, 4 3)))"^^geo:wktLiteral AS ?literal)
+  BIND (geof:geometryN(?literal,"1"^^xsd:integer) as ?geomN)
+}`,
+"http://www.opengis.net/def/function/geosparql/geometryType":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?gtype
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:geometryType(?literal) AS ?gtype)
+}`,
+"http://www.opengis.net/def/function/geosparql/getSRID":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?srid
+WHERE {
+  my:A geo:hasDefaultGeometry ?geom .
+  ?geom geo:asWKT ?literal .
+  BIND (geof:getSRID(?literal) as ?srid)
+}`,
+"http://www.opengis.net/def/function/geosparql/intersection":`
+PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?dLiteral ?intersection
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  my:D geo:hasDefaultGeometry ?dGeom .
+  ?dGeom geo:asWKT ?dLiteral .
+  BIND (geof:intersection(?aLiteral, ?dLiteral) as ?intersection)
+}`,	    		        
+"http://www.opengis.net/def/function/geosparql/is3D":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>                
+SELECT ?n_wkt ?isN3D ?k_wkt ?isK3D {
+	<http://example.org/ApplicationSchema#NExactGeom> geo:asWKT ?n_wkt .
+	BIND(geof:is3D(?n_wkt) AS ?isN3D)
+	<http://example.org/ApplicationSchema#KExactGeom> geo:asWKT ?k_wkt .
+	BIND(geof:is3D(?k_wkt) AS ?isK3D)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/isCCW":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>  
+SELECT ?a_wkt ?e_wkt ?isACCW ?isECCW {
+	<http://example.org/ApplicationSchema#AExactGeom> geo:asWKT ?a_wkt .
+	BIND(geof:isCCW(?a_wkt) AS ?isACCW)
+	<http://example.org/ApplicationSchema#EExactGeom> geo:asWKT ?e_wkt .
+	BIND(geof:isCCW(?e_wkt) AS ?isECCW)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/isCW":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>  
+SELECT ?a_wkt ?e_wkt ?isACW ?isECW {
+	<http://example.org/ApplicationSchema#AExactGeom> geo:asWKT ?a_wkt .
+	BIND(geof:isCW(?a_wkt) AS ?isACW)
+	<http://example.org/ApplicationSchema#EExactGeom> geo:asWKT ?e_wkt .
+	BIND(geof:isCW(?e_wkt) AS ?isECW)
+}`,
+"http://www.opengis.net/def/function/geosparql/isClosed":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?a_wkt ?isAClosed ?e_wkt ?isEClosed {
+	<http://example.org/ApplicationSchema#AExactGeom> geo:asWKT ?a_wkt .
+	BIND(geof:isClosed(?a_wkt) AS ?isAClosed)
+	<http://example.org/ApplicationSchema#EExactGeom> geo:asWKT ?e_wkt .
+	BIND(geof:isClosed(?e_wkt) AS ?isEClosed)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/isConcave":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>                
+SELECT ?a_wkt ?isAConcave {
+	<http://example.org/ApplicationSchema#AExactGeom> geo:asWKT ?a_wkt .
+	BIND(geof:isConcave(?a_wkt) AS ?isAConcave)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/isCollection":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?isC1 ?isC2 ?isC3 {
+	BIND(geof:isCollection("GEOMETRYCOLLECTION (MULTIPOINT((0 0), (1 1)), POINT(3 4), LINESTRING(2 3, 3 4))"^^geo:wktLiteral) AS ?isC1)
+	BIND(geof:isCollection("MULTIPOLYGON (((1 1, 1 3, 3 3, 3 1, 1 1)), ((4 3, 6 3, 6 1, 4 1, 4 3)))"^^geo:wktLiteral) AS ?isC2)
+	BIND(geof:isCollection("POLYGON ((0 0, 4 0, 4 4, 0 4, 0 0), (1 1, 1 2, 2 2, 2 1, 1 1))"^^geo:wktLiteral) AS ?isC3)
+}`,
+"http://www.opengis.net/def/function/geosparql/isEmpty":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?i_wkt (xsd:boolean(?isIEmptyr) as ?isIEmpty) ?k_wkt (xsd:boolean(?isKEmptyr) as ?isKEmpty) {
+	<http://example.org/ApplicationSchema#IExactGeom> geo:asWKT ?i_wkt .
+	BIND(geof:isEmpty(?i_wkt) AS ?isIEmptyr)
+	 <http://example.org/ApplicationSchema#KExactGeom> geo:asWKT ?k_wkt .
+	BIND(geof:isEmpty(?k_wkt) AS ?isKEmptyr)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/isRing":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>                
+SELECT ?a_wkt ?isARing ?o_wkt ?isORing {
+	<http://example.org/ApplicationSchema#AExactGeom> geo:asWKT ?a_wkt .
+	BIND(geof:isRing(?a_wkt) AS ?isARing)
+	<http://example.org/ApplicationSchema#OExactGeom> geo:asWKT ?o_wkt .
+	BIND(geof:isRing(?o_wkt) AS ?isORing)
+}`,
+"http://www.opengis.net/def/function/geosparql/isSimple":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>                
+SELECT ?a_wkt ?isASimple ?o_wkt ?isOSimple {
+	<http://example.org/ApplicationSchema#AExactGeom> geo:asWKT ?a_wkt .
+	BIND(geof:isSimple(?a_wkt) AS ?isASimple)
+	<http://example.org/ApplicationSchema#OExactGeom> geo:asWKT ?o_wkt .
+	BIND(geof:isSimple(?o_wkt) AS ?isOSimple)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/isTriangle":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?a_wkt ?isTriangle ?isNoTriangle {
+	<http://example.org/ApplicationSchema#AExactGeom> geo:asWKT ?a_wkt .
+	BIND(geof:isTriangle(?a_wkt) AS ?isNoTriangle)
+	BIND(geof:isTriangle("POLYGON ((0 0,0 1,1 1,0 0))"^^geo:wktLiteral) AS ?isTriangle)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/isValid":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?a_wkt ?isValid ?isNotValid {
+	<http://example.org/ApplicationSchema#AExactGeom> geo:asWKT ?a_wkt .
+	BIND(geof:isValid(?a_wkt) AS ?isValid)
+			<http://example.org/ApplicationSchema#OExactGeom> geo:asWKT ?o_wkt .
+	BIND(geof:isValid("POLYGON((0 0, 10 10, 0 10, 10 0, 0 0))"^^geo:wktLiteral) AS ?isNotValid)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/leftOf":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?leftt) as ?left) (xsd:boolean(?nleftt) as ?notleft)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND("Polygon((-82.3 34.0, -82.1 34.0, -82.1 34.2, -82.3 34.2, -82.3 34.0))"^^geo:wktLiteral AS ?dLiteral)
+  BIND (geof:leftOf(?geom1, ?geom2) as ?leftt)
+  BIND (geof:leftOf(?geom2, ?geom1) as ?nleftt)
+}`,
+"http://www.opengis.net/def/function/geosparql/length":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?length ?length3D
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:length(?aLiteral,"http://www.opengis.net/def/uom/OGC/1.0/meter"^^xsd:anyURI) as ?length)
+  BIND (geof:length(geof:force3D(?aLiteral,5)) as ?length3D)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/longestLine":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+SELECT ?geom1 ?geom2 ?longestLine
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:D geo:hasDefaultGeometry ?dGeom .
+  ?dGeom geo:asWKT ?geom2 .
+  BIND (geof:longestLine(?geom1, ?geom2) as ?longestLine)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/maxDistance":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 ?maxDistance ?maxDistance3D
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:D geo:hasDefaultGeometry ?dGeom .
+  ?dGeom geo:asWKT ?geom2 .
+  BIND (geof:maxDistance(?geom1, ?geom2) as ?maxDistance)
+  BIND (geof:maxDistance(geof:force3D(?geom1,5), geof:force3D(?geom2,5)) as ?maxDistance3D)
+}`,		            
+"http://www.opengis.net/def/function/geosparql/maxX":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?maxX
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:maxX(?literal) AS ?maxX)
+}`,
+"http://www.opengis.net/def/function/geosparql/maxY":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?maxY
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:maxY(?literal) AS ?maxY)
+}`,
+"http://www.opengis.net/def/function/geosparql/maxZ":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?maxZ
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:maxZ(?literal) AS ?maxZ)
+}`,
+"http://www.opengis.net/def/function/geosparql/metricArea":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?area
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:metricArea(?aLiteral) as ?area)
+}`,
+"http://www.opengis.net/def/function/geosparql/metricBuffer":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?buffer
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:metricBuffer(?aLiteral,"5.0"^^xsd:double) as ?buffer)
+}`,	
+"http://www.opengis.net/def/function/geosparql/metricDistance":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 ?mdistance
+WHERE {
+  my:C geo:hasDefaultGeometry ?cGeom .
+  ?cGeom geo:asWKT ?geom1 .
+  my:F geo:hasDefaultGeometry ?fGeom .
+  ?fGeom geo:asWKT ?geom2 .
+  BIND (geof:metricDistance(?geom1, ?geom2) as ?mdistance)
+}`,	
+"http://www.opengis.net/def/function/geosparql/metricLength":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?mlength
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:metricLength(?aLiteral) as ?mlength)
+}`,
+"http://www.opengis.net/def/function/geosparql/metricPerimeter":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?mperimeter
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:metricPerimeter(?literal) AS ?mperimeter)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/metricWithinDistance":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT (xsd:boolean(?wdistance) as ?wddistance)
+WHERE {
+  my:C geo:hasDefaultGeometry ?cGeom .
+  ?cGeom geo:asWKT ?cLiteral .
+  my:F geo:hasDefaultGeometry ?fGeom .
+  ?fGeom geo:asWKT ?fLiteral .
+  BIND (geof:metricWithinDistance(?cLiteral, ?fLiteral,"5.0"^^xsd:double) as ?wdistance)
+}`,
+"http://www.opengis.net/def/function/geosparql/minX":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?minX
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:minX(?literal) AS ?minX)
+}`,
+"http://www.opengis.net/def/function/geosparql/minY":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?minY
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:minY(?literal) AS ?minY)
+}`,
+"http://www.opengis.net/def/function/geosparql/minZ":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?minZ
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:minZ(?literal) AS ?minZ)
+}`,
+"http://www.opengis.net/def/function/geosparql/numGeometries":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?numGeoms
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:numGeometries(?literal) AS ?numGeoms)
+}`,
+"http://www.opengis.net/def/function/geosparql/numPoints":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?numPoints
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:numPoints(?literal) AS ?numPoints)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/offsetCurve":`
+PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+SELECT ?literal ?offsetCurve
+WHERE {
+  my:EExactGeom geo:asWKT ?literal .
+  BIND(geof:offsetCurve(?literal,10) AS ?offsetCurve)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/pointInsideCircle":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?pointInsideCircle ?geom ?pointInsideCircle2
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND("POLYGON Z ((-83.6 34.1 5.0, -83.6 34.5 5.0, -83.6 34.5 5.0, -83.2 34.5 5.0, -83.2 34.1 5.0, -83.6 34.1 5.0))"^^geo:wktLiteral AS ?geom)
+  BIND(geof:pointInsideCircle(?literal,"POINT Z (80 80)"^^geo:wktLiteral,"100.5"^^xsd:double) AS ?pointInsideCircle)
+  BIND(geof:pointInsideCircle(?geom,"POINT Z (83.6 34.1 5.0)"^^geo:wktLiteral,"100.5"^^xsd:double) AS ?pointInsideCircle2)
+}`,	
+"http://www.opengis.net/def/function/geosparql/ext/pointN":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?pointN
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:pointN(?literal,"1"^^xsd:integer) AS ?pointN)
+}`,		
+"http://www.opengis.net/def/function/geosparql/ext/pointOnSurface":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?pointOnSurface
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:pointOnSurface(?literal) AS ?pointOnSurface)
+}`,	
+"http://www.opengis.net/def/function/geosparql/rcc8dc":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?rcc8dc) as ?disjoint) (xsd:boolean(?rcc8dc2) as ?disjoint2)
+WHERE {
+  my:B geo:hasDefaultGeometry ?bGeom .
+  ?bGeom geo:asWKT ?geom1 .
+  my:C geo:hasDefaultGeometry ?cGeom .
+  ?cGeom geo:asWKT ?geom2 .
+  BIND (geof:rcc8dc(?geom1, ?geom1) as ?rcc8dc)
+  BIND (geof:rcc8dc(?geom1, ?geom2) as ?rcc8dc2)
+}`,
+"http://www.opengis.net/def/function/geosparql/rcc8ec":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?rcc8ecc) as ?rcc8ec)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:C geo:hasDefaultGeometry ?cGeom .
+  ?cGeom geo:asWKT ?geom2 .
+  BIND (geof:rcc8ec(?geom1, ?geom2) as ?rcc8ecc)
+}`,
+"http://www.opengis.net/def/function/geosparql/rcc8eq":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?rcc8eq) as ?equals) (xsd:boolean(?rcc8eq2) as ?equals2)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:B geo:hasDefaultGeometry ?bGeom .
+  ?bGeom geo:asWKT ?geom2 .
+  BIND (geof:rcc8eq(?geom1, ?geom1) as ?rcc8eq)
+  BIND (geof:rcc8eq(?geom1, ?geom2) as ?rcc8eq2)
+}`,
+"http://www.opengis.net/def/function/geosparql/rcc8ntpp":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?rcc8ntppr) as ?rcc8ntpp) (xsd:boolean(?rcc8ntppr2) as ?rcc8ntpp2)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:G geo:hasDefaultGeometry ?gGeom .
+  ?gGeom geo:asWKT ?geom2 .
+  BIND (geof:rcc8ntpp(?geom2, ?geom1) as ?rcc8ntppr)
+  BIND (geof:rcc8ntpp(?geom1, ?geom2) as ?rcc8ntppr2)
+}`,
+"http://www.opengis.net/def/function/geosparql/rcc8ntppi":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?rcc8ntppir) as ?rcc8ntppi) (xsd:boolean(?rcc8ntppir2) as ?rcc8ntppi2)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:G geo:hasDefaultGeometry ?gGeom .
+  ?gGeom geo:asWKT ?geom2 .
+  BIND (geof:rcc8ntppi(?geom1, ?geom2) as ?rcc8ntppir)
+  BIND (geof:rcc8ntppi(?geom2, ?geom1) as ?rcc8ntppir2)
+}`,
+"http://www.opengis.net/def/function/geosparql/rcc8po":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?rcc8por) as ?rcc8po)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:D geo:hasDefaultGeometry ?dGeom .
+  ?dGeom geo:asWKT ?geom2 .
+  BIND (geof:rcc8po(?geom1, ?geom2) as ?rcc8por)
+}`,
+"http://www.opengis.net/def/function/geosparql/rcc8tpp":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?rcc8tppr) as ?rcc8tpp)
+WHERE {
+  my:B geo:hasDefaultGeometry ?bGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom2 .
+  BIND (geof:rcc8tpp(?geom1, ?geom2) as ?rcc8tppr)
+}`,
+"http://www.opengis.net/def/function/geosparql/rcc8tppi":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?rcc8tppir) as ?rcc8tppi)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:B geo:hasDefaultGeometry ?bGeom .
+  ?bGeom geo:asWKT ?geom2 .
+  BIND (geof:rcc8tppi(?geom1, ?geom2) as ?rcc8tppir)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/removePoint":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom ?nonrepgeom
+WHERE {
+  BIND("POLYGON ((-83.6 34.1, -83.6 34.5, -83.6 34.5, -83.2 34.5, -83.2 34.1, -83.6 34.1))"^^geo:wktLiteral AS ?geom)
+  BIND(geof:removePoint(?geom,"1"^^xsd:integer) AS ?nonrepgeom)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/removeRepeatedPoints":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom ?nonrepgeom
+WHERE {
+  BIND("POLYGON ((-83.6 34.1, -83.6 34.5, -83.6 34.5, -83.2 34.5, -83.2 34.1, -83.6 34.1))"^^geo:wktLiteral AS ?geom)
+  BIND(geof:removeRepeatedPoints(?geom) AS ?nonrepgeom)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/reverse":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?reverse
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:reverse(?literal) AS ?reverse)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/rightOf":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?rightt) as ?right) (xsd:boolean(?nrightt) as ?notright)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  BIND("Polygon((-82.3 34.0, -82.1 34.0, -82.1 34.2, -82.3 34.2, -82.3 34.0))"^^geo:wktLiteral AS ?geom2)
+  BIND (geof:rightOf(?geom1, ?geom2) as ?nrightt)
+  BIND (geof:rightOf(?geom2, ?geom1) as ?rightt)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/rotate":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?rotated
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:rotate(?literal,"90"^^xsd:double) AS ?rotated)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/setPoint":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom ?nonrepgeom
+WHERE {
+  BIND("POLYGON ((-83.6 34.1, -83.6 34.5, -83.6 34.5, -83.2 34.5, -83.2 34.1, -83.6 34.1))"^^geo:wktLiteral AS ?geom)
+  BIND(geof:setPoint(?geom,"1"^^xsd:integer,"POINT(22.0 22.0)"^^geo:wktLiteral) AS ?nonrepgeom)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/selfIntersections":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+SELECT ?geom1 ?geom2 ?si1 ?si2
+WHERE {
+  my:AExactGeom geo:asWKT ?geom1 .
+  BIND("POLYGON((0 0, 2 2, 0 2, 2 0, 0 0))"^^geo:wktLiteral AS ?geom2)
+  BIND(geof:selfIntersections(?geom1) AS ?si1)
+  BIND(geof:selfIntersections(?geom2) AS ?si2)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/shortestLine":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+SELECT ?geom1 ?geom2 ?sline
+WHERE {
+  my:AExactGeom geo:asWKT ?geom1 .
+  my:OExactGeom geo:asWKT ?geom2 .
+  BIND(geof:shortestLine(?geom1,?geom2) AS ?sline)
+}`,		
+"http://www.opengis.net/def/function/geosparql/ext/simplify":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+SELECT ?literal ?simple
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:simplify(?literal,"1.5"^^xsd:double) AS ?simple)
+}`,
+"http://www.opengis.net/def/function/geosparql/sfContains":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?sfContains) as ?contains)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:F geo:hasDefaultGeometry ?fGeom .
+  ?fGeom geo:asWKT ?geom2 .
+  BIND (geof:sfContains(?geom1, ?geom2) as ?sfContains)
+}`,
+"http://www.opengis.net/def/function/geosparql/sfCrosses":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?sfCrosses) as ?crosses)
+WHERE {
+  my:E geo:hasDefaultGeometry ?eGeom .
+  ?eGeom geo:asWKT ?geom1 .
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom2 .
+  BIND (geof:sfCrosses(?geom1, ?geom2) as ?sfCrosses)
+}`,
+"http://www.opengis.net/def/function/geosparql/sfDisjoint":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?sfDisjoint) as ?disjoint)
+WHERE {
+  my:C geo:hasDefaultGeometry ?cGeom .
+  ?cGeom geo:asWKT ?geom1 .
+  my:F geo:hasDefaultGeometry ?fGeom .
+  ?fGeom geo:asWKT ?geom2 .
+  BIND (geof:sfDisjoint(?geom1, ?geom2) as ?sfDisjoint)
+}`,
+"http://www.opengis.net/def/function/geosparql/sfIntersects":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?sfIntersects) as ?intersects)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:D geo:hasDefaultGeometry ?dGeom .
+  ?dGeom geo:asWKT ?geom2 .
+  BIND (geof:sfIntersects(?geom1, ?geom2) as ?sfIntersects)
+}`,
+"http://www.opengis.net/def/function/geosparql/sfEquals":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?sfEquals) as ?equal) (xsd:boolean(?sfEquals2) as ?notequal)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:B geo:hasDefaultGeometry ?bGeom .
+  ?bGeom geo:asWKT ?geom2 .
+  BIND (geof:sfEquals(?geom1, ?geom1) as ?sfEquals)
+  BIND (geof:sfEquals(?geom1, ?geom2) as ?sfEquals2)
+}`,
+"http://www.opengis.net/def/function/geosparql/sfOverlaps":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?sfOverlaps) as ?overlaps)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:D geo:hasDefaultGeometry ?dGeom .
+  ?dGeom geo:asWKT ?geom2 .
+  BIND (geof:sfOverlaps(?geom1, ?geom2) as ?sfOverlaps)
+}`,
+"http://www.opengis.net/def/function/geosparql/sfTouches":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?sfTouches) as ?touches)
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:C geo:hasDefaultGeometry ?cGeom .
+  ?cGeom geo:asWKT ?geom2 .
+  BIND (geof:sfTouches(?geom1, ?geom2) as ?sfTouches)
+}`,
+"http://www.opengis.net/def/function/geosparql/sfWithin":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 (xsd:boolean(?sfWithin) as ?within)
+WHERE {
+  my:B geo:hasDefaultGeometry ?bGeom .
+  ?bGeom geo:asWKT ?geom1 .
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom2 .
+  BIND (geof:sfWithin(?geom2, ?geom1) as ?sfWithin)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/smooth":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?smoothed
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:smooth(?literal) AS ?smoothed)
+}`,
+"http://www.opengis.net/def/function/geosparql/spatialDimension":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?spatialDimension
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:spatialDimension(?literal) AS ?spatialDimension)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/startPoint":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?startPoint
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:startPoint(?literal) AS ?startPoint)
+}`,
+"http://www.opengis.net/def/function/geosparql/symDifference":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?geom1 ?geom2 ?sdifference
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:D geo:hasDefaultGeometry ?dGeom .
+  ?dGeom geo:asWKT ?geom2 .
+  BIND (geof:symDifference(?geom1, ?geom2) as ?sdifference)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/translate":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?translated
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:translate(?literal,10,10) AS ?translated)
+}`,
+"http://www.opengis.net/def/function/geosparql/transform":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?transformed
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:transform(?literal,"http://www.opengis.net/def/crs/EPSG/0/25832") AS ?transformed)
+}`,
+"http://www.opengis.net/def/function/geosparql/transformCRS84":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?transformed
+WHERE {
+  my:LExactGeom geo:asWKT ?literal .
+  BIND(geof:transformCRS84(?literal) AS ?transformed)
+}`,
+"http://www.opengis.net/def/function/geosparql/union":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+SELECT ?geom1 ?geom2 ?union
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?geom1 .
+  my:D geo:hasDefaultGeometry ?dGeom .
+  ?dGeom geo:asWKT ?geom2 .
+  BIND (geof:union(?geom1, ?geom2) as ?union)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/withinDistance":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT (xsd:boolean(?wdistance) as ?wddistance)
+WHERE {
+  my:C geo:hasDefaultGeometry ?cGeom .
+  ?cGeom geo:asWKT ?cLiteral .
+  my:F geo:hasDefaultGeometry ?fGeom .
+  ?fGeom geo:asWKT ?fLiteral .
+  BIND (geof:withinDistance(?cLiteral, ?fLiteral,"5.0"^^xsd:double,"http://www.ontology-of-units-of-measure.org/resource/om-2/mile"^^xsd:anyURI) as ?wdistance)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/X":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+SELECT ?literal ?X
+WHERE {
+  my:APointGeom geo:asWKT ?literal .
+  BIND(geof:X(?literal) AS ?X)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/Y":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+SELECT ?literal ?Y
+WHERE {
+  my:APointGeom geo:asWKT ?literal .
+  BIND(geof:Y(?literal) AS ?Y)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/Z":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+SELECT ?literal ?Z
+WHERE {
+  my:APointGeom geo:asWKT ?literal .
+  BIND(geof:Z(?literal) AS ?Z)
+}`,}
+    var prefixList="PREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX geo: <http://www.opengis.net/ont/geosparql#>\nPREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX xml: <http://www.w3.org/XML/1998/namespace>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xerl: <http://www.xerleben.de/schema/2.0_1#>\nPREFIX xplan5: <http://www.xplanung.de/xplangml/5/0#>\nPREFIX semgis: <http://www.semgis.de/geodata#> "
+
+	var colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', 
+		  '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
+		  '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', 
+		  '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC',
+		  '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', 
+		  '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399',
+		  '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', 
+		  '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
+		  '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', 
+		  '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF'];
+
+var overlayMaps={}
+	var sources=[]
+
+function showQueryGeo(){
+	showQuery("functions")
+}
+
+function showQueryExt(){
+	showQuery("functionsext")
+}
+	
+function showQuery(identifier){
+  if(document.getElementById(identifier).value in geofqueries){
+    yasgui.getTab().yasqe.setValue(geofqueries[document.getElementById(identifier).value])
+  }else{
+	yasgui.getTab().yasqe.setValue("No sample query available for function "+document.getElementById(identifier).value)
+	yasres={"head":{"vars":[]},"results":{"bindings":[]}}
+	yasgui.getTab().yasr.setResponse({
+	  data: yasres,
+	  contentType: "application/sparql-results+json",
+	  status: 200,
+	  executionTime: 1000 // ms
+	  // error to show
+	})  	
+  }
+}
+
+
+const endpoint = "https://research-squirrel-engineers.github.io/comunica-geosparql/testdata.ttl"
+const urlParams = new URLSearchParams(window.location.search);
+const prefixes=`
+PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+SELECT ?literal ?maxX
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:maxX(?literal) AS ?maxX)
+}`
+
+ const myEngine=new Comunica.QueryEngine()
+async function queryFile(){
+  yasres={"head":{"vars":[]},"results":{"bindings":[]}}
+  config={"sources":[endpoint]}
+  const result=await myEngine.queryBindings(yasgui.getTab().yasqe.getValue(), config)
+  const data=await result.toArray()	
+  vararray=[]
+  ttypemap={"NamedNode":"uri","Literal":"literal"}
+  for(bind of data){
+	curbindings={}
+	for(entry of bind["entries"]["_root"]["entries"]){
+		if(!(vararray.includes(entry[0]))){
+			vararray.push(entry[0])
+		}
+		curbindings[entry[0]]={"type":ttypemap[entry[1]["termType"]],"value":entry[1]["value"]}	
+		if("datatype" in entry[1]){
+			curbindings[entry[0]]["datatype"]=entry[1]["datatype"]["value"]
+		}
+		if("language" in entry[1] && entry[1]["language"]!=""){
+			curbindings[entry[0]]["language"]=entry[1]["language"]
+		}
+			
+	}
+	yasres["results"]["bindings"].push(curbindings)
+  }
+  yasres["head"]["vars"]=vararray
+	yasgui.getTab().yasr.setResponse({
+	  data: yasres,
+	  contentType: "application/sparql-results+json",
+	  status: 200,
+	  executionTime: 1000 // ms
+	  // error to show
+	})  		
+
+}
+</script>
+	  <style>
+  #mapid { height: 500px;}
+  </style>
+  <style>
+.table-wrapper-scroll-y {
+  display: block;
+  max-height: 500px;
+  max-width: 100%;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+</style>
+</head>
+<body>
+<h2>Comunica GeoSPARQL Test</h2>
+<div class="row">
+
+  <div id="yasgui" class="col-12">
+This homepage allows testing GeoSPARQL queries for the Comunica Query engine.<br/>
+Officially standardized GeoSPARQL functions are presented in the geof namespace.<br/>
+Unofficial functions use the geofext namespace.<br/>
+<span id="querycount"></span> Sample Queries<br/>
+<span id="gspquery"></span> GeoSPARQL <select id="functions" onchange="showQueryGeo()"></select><br/>
+<span id="nongspquery"></span> GeoSPARQL Ext <select id="functionsext" onchange="showQueryExt()"></select><br/>
+<button id="query" onclick="queryFile()" class="yasqe_queryButton query_valid">
+  <div class="svgImg queryIcon">
+    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" height="81.9" width="72.9" version="1.1" y="0px" x="0px" viewBox="0 0 72.900002 81.900002" aria-hidden="true"><path id="queryIcon" d="m69.6 35.2-60.3-34.3c-2.2-1.2-4.4-1.2-6.4 0s-2.9 3.4-2.9 5.6v68.8c0 2.2 1.2 4.4 2.9 5.6 1 0.5 2.2 1 3.4 1s2.2-0.5 2.9-1l60.3-34.3c2.2-1.2 3.4-3.4 3.4-5.6s-1.1-4.3-3.3-5.8z"></path><path id="loadingIcon" d="m61.184 36.167-48.73-27.719c-1.7779-0.96976-3.5558-0.96976-5.172 0-1.6163 0.96976-2.3436 2.7476-2.3436 4.5255v55.599c0 1.7779 0.96976 3.5558 2.3436 4.5255 0.80813 0.40407 1.7779 0.80813 2.7476 0.80813 0.96975 0 1.7779-0.40406 2.3436-0.80813l48.73-27.719c1.7779-0.96976 2.7476-2.7476 2.7476-4.5255s-0.88894-3.475-2.6668-4.6872z" fill="none"></path></svg>
+  </div>
+</button>
+ </div>
+</div>
+<script>
+options=""
+optionsext=""
+for(fun in geof){
+	if(fun.includes("ext")){
+		optionsext+="<option value=\""+fun+"\">"+geof[fun]+"</option>"
+	}else{
+		options+="<option value=\""+fun+"\">"+geof[fun]+"</option>"	
+	}
+}
+document.getElementById("functions").innerHTML=options
+document.getElementById("functionsext").innerHTML=optionsext
+document.getElementById("querycount").innerHTML=document.getElementById("functions").options.length+document.getElementById("functionsext").options.length;
+document.getElementById("gspquery").innerHTML=document.getElementById("functions").options.length;
+document.getElementById("nongspquery").innerHTML=document.getElementById("functionsext").options.length;
+const GeoPlugin = window.YasguiGeoTg && (window.YasguiGeoTg.default || window.YasguiGeoTg);
+
+console.log(GeoPlugin)
+
+const Plugin3D = window.Yasgui3D && (window.Yasgui3D.default || window.Yasgui3D);
+
+console.log(Plugin3D)
+	
+// Register the plugin with YASR before creating Yasgui
+Yasgui.Yasr.registerPlugin('geo', GeoPlugin);
+Yasgui.Yasr.registerPlugin('3d', Plugin3D);
+
+const yasgui = new Yasgui(document.getElementById("yasgui"),{
+	"yasr":{"pluginOrder": ["table","response","geo","3d"],"defaultPlugin":"geo"},
+	"yasqe":{"showQueryButton": false},
+	"requestConfig": { "endpoint": endpoint},  
+	"copyEndpointOnNewTab": false}
+);
+ if(typeof(thequery)!=='undefined' && thequery!=null){
+	yasgui.getTab().yasqe.setValue(thequery)
+ }else{
+	yasgui.getTab().yasqe.setValue(prefixes)
+ }
+ baseurl="{{site.url}}{{site.baseurl_root}}".replace("net//","net/")
+ yasgui.getTab().yasr.on("drawn",function(event){
+	$('.iri').each(function(i,obj){
+	    console.log(obj)
+		if($(this).attr("href").includes(baseurl)){
+			$(this).attr("href",$(this).attr("href").replace(baseurl,""))
+		}
+	})
+ })
+  document.getElementsByClassName('yasqe_buttons')[0].appendChild(document.getElementById('query'));
+</script>
+</body>
+</html>

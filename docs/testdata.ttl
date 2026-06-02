@@ -1,0 +1,1250 @@
+@prefix my: <http://example.org/ApplicationSchema#> .
+@prefix sf: <http://www.opengis.net/ont/sf#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix qudt: <http://qudt.org/vocab/unit/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://example.org/ApplicationSchema#hasExactGeometry
+my:hasExactGeometry rdf:type owl:AnnotationProperty ;
+                    rdfs:subPropertyOf geo:hasDefaultGeometry ,
+                                       geo:hasGeometry .
+
+
+###  http://example.org/ApplicationSchema#hasPointGeometry
+my:hasPointGeometry rdf:type owl:AnnotationProperty ;
+                    rdfs:subPropertyOf geo:hasGeometry .
+
+
+###  http://qudt.org/vocab/unit/numericValue
+qudt:numericValue rdf:type owl:AnnotationProperty .
+
+
+###  http://qudt.org/vocab/unit/unit
+qudt:unit rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#asDGGS
+geo:asDGGS rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#asDggs
+geo:asDggs rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#asGML
+geo:asGML rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#asGeoJSON
+geo:asGeoJSON rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#asKML
+geo:asKML rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#asWKT
+geo:asWKT rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#coordinateDimension
+geo:coordinateDimension rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#defaultGeometry
+geo:defaultGeometry rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#dimension
+geo:dimension rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#ehContains
+geo:ehContains rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#ehCoveredBy
+geo:ehCoveredBy rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#ehCovers
+geo:ehCovers rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#ehDisjoint
+geo:ehDisjoint rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#ehEquals
+geo:ehEquals rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#ehInside
+geo:ehInside rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#ehMeet
+geo:ehMeet rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#ehOverlap
+geo:ehOverlap rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#hasArea
+geo:hasArea rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#hasBoundingBox
+geo:hasBoundingBox rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#hasCentroid
+geo:hasCentroid rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#hasDefaultGeometry
+geo:hasDefaultGeometry rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#hasGeometry
+geo:hasGeometry rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#hasMetricArea
+geo:hasMetricArea rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#hasMetricLength
+geo:hasMetricLength rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#hasMetricPerimeterLength
+geo:hasMetricPerimeterLength rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#hasPerimeterLength
+geo:hasPerimeterLength rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#hasSerialization
+geo:hasSerialization rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#isEmpty
+geo:isEmpty rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#isSimple
+geo:isSimple rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#rcc8dc
+geo:rcc8dc rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#rcc8ec
+geo:rcc8ec rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#rcc8eq
+geo:rcc8eq rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#rcc8ntpp
+geo:rcc8ntpp rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#rcc8ntppi
+geo:rcc8ntppi rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#rcc8po
+geo:rcc8po rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#rcc8tpp
+geo:rcc8tpp rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#rcc8tppi
+geo:rcc8tppi rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#sfContains
+geo:sfContains rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#sfCrosses
+geo:sfCrosses rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#sfDisjoint
+geo:sfDisjoint rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#sfEquals
+geo:sfEquals rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#sfIntersects
+geo:sfIntersects rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#sfOverlaps
+geo:sfOverlaps rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#sfTouches
+geo:sfTouches rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#sfWithin
+geo:sfWithin rdf:type owl:AnnotationProperty .
+
+
+###  http://www.opengis.net/ont/geosparql#spatialDimension
+geo:spatialDimension rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.opengis.net/ont/geosparql#asKML
+geo:asKML rdf:type rdfs:Datatype .
+
+
+###  http://www.opengis.net/ont/geosparql#dggsLiteral
+geo:dggsLiteral rdf:type rdfs:Datatype .
+
+
+###  http://www.opengis.net/ont/geosparql#geoJSONLiteral
+geo:geoJSONLiteral rdf:type rdfs:Datatype .
+
+
+###  http://www.opengis.net/ont/geosparql#gmlLiteral
+geo:gmlLiteral rdf:type rdfs:Datatype .
+
+
+###  http://www.opengis.net/ont/geosparql#kmlLiteral
+geo:kmlLiteral rdf:type rdfs:Datatype .
+
+
+###  http://www.opengis.net/ont/geosparql#wktLiteral
+geo:wktLiteral rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/ApplicationSchema#PlaceOfInterest
+my:PlaceOfInterest rdf:type owl:Class ;
+                   rdfs:subClassOf geo:Feature .
+
+
+###  http://qudt.org/vocab/unit#Unit
+<http://qudt.org/vocab/unit#Unit> rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/geosparql#Feature
+geo:Feature rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/geosparql#FeatureCollection
+geo:FeatureCollection rdf:type owl:Class ;
+                      rdfs:subClassOf geo:SpatialObjectCollection .
+
+
+###  http://www.opengis.net/ont/geosparql#Geometry
+geo:Geometry rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/geosparql#GeometryCollection
+geo:GeometryCollection rdf:type owl:Class ;
+                       rdfs:subClassOf geo:SpatialObjectCollection .
+
+
+###  http://www.opengis.net/ont/geosparql#SpatialMeasure
+geo:SpatialMeasure rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/geosparql#SpatialObject
+geo:SpatialObject rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/geosparql#SpatialObjectCollection
+geo:SpatialObjectCollection rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/gml#LineString
+<http://www.opengis.net/ont/gml#LineString> rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/gml#Point
+<http://www.opengis.net/ont/gml#Point> rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/gml#Polygon
+<http://www.opengis.net/ont/gml#Polygon> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://www.opengis.net/ont/gml#Surface> .
+
+
+###  http://www.opengis.net/ont/gml#Surface
+<http://www.opengis.net/ont/gml#Surface> rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/sf#Curve
+sf:Curve rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/sf#LineString
+sf:LineString rdf:type owl:Class ;
+              rdfs:subClassOf sf:Curve .
+
+
+###  http://www.opengis.net/ont/sf#Point
+sf:Point rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/sf#Polygon
+sf:Polygon rdf:type owl:Class ;
+           rdfs:subClassOf sf:Surface .
+
+
+###  http://www.opengis.net/ont/sf#Surface
+sf:Surface rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/ApplicationSchema#A
+my:A rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:AExactGeom ;
+     my:hasPointGeometry my:APointGeom ;
+     geo:defaultGeometry my:AExactGeom ;
+     geo:ehContains my:B ;
+     geo:ehCovers my:B ;
+     geo:ehEquals my:A ;
+     geo:ehMeet my:C ;
+     geo:ehOverlap my:D ;
+     geo:hasBoundingBox my:AExactGeom ;
+     geo:hasCentroid my:APointGeom ;
+     geo:hasDefaultGeometry my:AExactGeom ;
+     geo:hasGeometry my:AExactGeom ;
+     geo:hasMetricArea "1.6338971063552246E9"^^xsd:double ;
+     geo:hasMetricPerimeterLength "false"^^xsd:boolean ;
+     geo:rcc8ec my:C ;
+     geo:rcc8eq my:A ;
+     geo:rcc8ntppi my:G ;
+     geo:rcc8po my:D ;
+     geo:rcc8tppi my:B ;
+     geo:sfContains my:B ;
+     geo:sfEquals my:A ;
+     geo:sfIntersects my:D ;
+     geo:sfOverlaps my:D ;
+     geo:sfTouches my:C .
+
+
+###  http://example.org/ApplicationSchema#AExactGeom
+my:AExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Polygon> ,
+                       sf:Polygon ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( '87f15d9acffffff', '87f143749ffffff', '87f15d9a1ffffff', '87f143296ffffff', '87f15d910ffffff', '87f143648ffffff', '87f14374bffffff', '87f15d9aeffffff', '87f15d98dffffff', '87f14366bffffff', '87f15d912ffffff', '87f14374dffffff', '87f15d9a5ffffff', '87f15d832ffffff', '87f15d914ffffff', '87f14364cffffff', '87f15d916ffffff', '87f15d9a9ffffff', '87f15d836ffffff', '87f15d988ffffff', '87f143748ffffff', '87f15d9abffffff', '87f143668ffffff', '87f15d9adffffff', '87f15d98cffffff', '87f14366affffff', '87f143649ffffff', '87f14366cffffff', '87f15d810ffffff', '87f143661ffffff', '87f15d913ffffff', '87f14364bffffff', '87f14366effffff', '87f14364dffffff', '87f15d9a8ffffff', '87f143292ffffff', '87f15d814ffffff', '87f143665ffffff', '87f15d9aaffffff', '87f15d989ffffff', '87f15d816ffffff' )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:exterior><gml:LinearRing><gml:posList>-83.6 34.1 -83.2 34.1 -83.2 34.5 -83.6 34.5 -83.6 34.1</gml:posList></gml:LinearRing></gml:exterior></gml:Polygon>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\": \"Polygon\", \"coordinates\": [[[-83.6, 34.1], [-83.2, 34.1], [-83.2, 34.5], [-83.6, 34.5], [-83.6, 34.1]]]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Polygon><outerBoundaryIs><LinearRing><coordinates>-83.6,34.1 -83.2,34.1 -83.2,34.5 -83.6,34.5 -83.6,34.1</coordinates></LinearRing></outerBoundaryIs></Polygon>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-83.6 34.1, -83.2 34.1, -83.2 34.5, -83.6 34.5, -83.6 34.1))
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:hasSerialization """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-83.6 34.1, -83.2 34.1, -83.2 34.5, -83.6 34.5, -83.6 34.1))
+
+    """^^geo:wktLiteral ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#AFeatureCollection
+my:AFeatureCollection rdf:type owl:NamedIndividual ,
+                               geo:FeatureCollection .
+
+
+###  http://example.org/ApplicationSchema#AGeometryCollection
+my:AGeometryCollection rdf:type owl:NamedIndividual ,
+                                geo:GeometryCollection .
+
+
+###  http://example.org/ApplicationSchema#APointGeom
+my:APointGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Point> ,
+                       sf:Point ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( 87f143649ffffff )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Point xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:pos>-83.4 34.3</gml:pos></gml:Point>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\":\"Point\",\"coordinates\":[-83.4, 34.3]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Point><coordinates>-83.4,34.3</coordinates></Point>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point(-83.4 34.3)
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#ASpatialObjectCollection
+my:ASpatialObjectCollection rdf:type owl:NamedIndividual ,
+                                     geo:SpatialObjectCollection .
+
+
+###  http://example.org/ApplicationSchema#B
+my:B rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:BExactGeom ;
+     my:hasPointGeometry my:BPointGeom ;
+     geo:defaultGeometry my:BExactGeom ;
+     geo:ehCoveredBy my:A ;
+     geo:ehDisjoint my:C ;
+     geo:ehEquals my:B ;
+     geo:hasCentroid my:BPointGeom ;
+     geo:hasDefaultGeometry my:BExactGeom ;
+     geo:hasGeometry my:BExactGeom ;
+     geo:rcc8dc my:C ;
+     geo:rcc8eq my:B ;
+     geo:rcc8tpp my:A ;
+     geo:sfDisjoint my:C ;
+     geo:sfEquals my:B ;
+     geo:sfWithin my:A .
+
+
+###  http://example.org/ApplicationSchema#BExactGeom
+my:BExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Polygon> ,
+                       sf:Polygon ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( '87f14364dffffff', '87f14366bffffff', '87f14366cffffff', '87f143749ffffff', '87f143292ffffff', '87f143649ffffff', '87f14374dffffff', '87f143668ffffff', '87f143296ffffff' )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:exterior><gml:LinearRing><gml:posList>-83.6 34.1 -83.4 34.1 -83.4 34.3 -83.6 34.3 -83.6 34.1</gml:posList></gml:LinearRing></gml:exterior></gml:Polygon>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\": \"Polygon\", \"coordinates\": [[[-83.6, 34.1], [-83.4, 34.1], [-83.4, 34.3], [-83.6, 34.3], [-83.6, 34.1]]]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Polygon><outerBoundaryIs><LinearRing><coordinates>-83.6,34.1 -83.4,34.1 -83.4,34.3 -83.6,34.3 -83.6,34.1</coordinates></LinearRing></outerBoundaryIs></Polygon>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-83.6 34.1, -83.4 34.1, -83.4 34.3, -83.6 34.3, -83.6 34.1))
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:hasMetricArea "4.089516328177643E8"^^xsd:double ;
+              geo:hasMetricPerimeterLength "81237.42251393184"^^xsd:double ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#BPointGeom
+my:BPointGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Point> ,
+                       sf:Point ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( 87f14366cffffff )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Point xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:pos>-83.5 34.2</gml:pos></gml:Point>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\":\"Point\",\"coordinates\":[-83.5, 34.2]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Point><coordinates>-83.5,34.2</coordinates></Point>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point(-83.5 34.2)
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#C
+my:C rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:CExactGeom ;
+     my:hasPointGeometry my:CPointGeom ;
+     geo:ehDisjoint my:B ;
+     geo:ehEquals my:C ;
+     geo:hasArea my:C_area ;
+     geo:hasBoundingBox my:C_bbox ;
+     geo:hasCentroid my:CPointGeom ,
+                     my:C_centroid ;
+     geo:hasDefaultGeometry my:CExactGeom ;
+     geo:hasGeometry my:CExactGeom ;
+     geo:hasMetricArea "4.079967948035431E8"^^xsd:double ,
+                       "4.0899263059323E8"^^xsd:double ;
+     geo:hasMetricPerimeterLength "81151.59235053362"^^xsd:double ,
+                                  "81152.0"^^xsd:double ;
+     geo:hasPerimeterLength my:C_perimeterlength ;
+     geo:rcc8dc my:B ;
+     geo:rcc8eq my:C ;
+     geo:sfDisjoint my:B ;
+     geo:sfEquals my:C .
+
+
+###  http://example.org/ApplicationSchema#CExactGeom
+my:CExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Polygon> ,
+                       sf:Polygon ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( '87f15d8acffffff', '87f15d8a8ffffff', '87f15d812ffffff', '87f15d8d6ffffff', '87f15d8d2ffffff', '87f15d88dffffff', '87f15d12cffffff', '87f15d889ffffff', '87f15d8abffffff' )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:exterior><gml:LinearRing><gml:posList>-83.2 34.3 -83.0 34.3 -83.0 34.5 -83.2 34.5 -83.2 34.3</gml:posList></gml:LinearRing></gml:exterior></gml:Polygon>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\": \"Polygon\", \"coordinates\": [[[-83.2, 34.3], [-83.0, 34.3], [-83.0, 34.5], [-83.2, 34.5], [-83.2, 34.3]]]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Polygon><outerBoundaryIs><LinearRing><coordinates>-83.2,34.3 -83,34.3 -83,34.5 -83.2,34.5 -83.2,34.3</coordinates></LinearRing></outerBoundaryIs></Polygon>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-83.2 34.3, -83.0 34.3, -83.0 34.5, -83.2 34.5, -83.2 34.3))
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#CPointGeom
+my:CPointGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Point> ,
+                       sf:Point ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( 87f15d88dffffff )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Point xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:pos>-83.1 34.4</gml:pos></gml:Point>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\":\"Point\",\"coordinates\":[-83.1, 34.4]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Point><coordinates>-83.1,34.4</coordinates></Point>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point(-83.1 34.4)
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#C_area
+my:C_area rdf:type owl:NamedIndividual ,
+                   geo:SpatialMeasure ;
+          qudt:numericValue "101064.28" ;
+          qudt:unit qudt:AC .
+
+
+###  http://example.org/ApplicationSchema#C_bbox
+my:C_bbox rdf:type owl:NamedIndividual ,
+                   sf:Polygon ;
+          geo:asWKT """
+        <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-83.2 34.3, -83.0 34.3, -83.0 34.5, -83.2 34.5, -83.2 34.3))
+    """^^geo:wktLiteral .
+
+
+###  http://example.org/ApplicationSchema#C_centroid
+my:C_centroid rdf:type owl:NamedIndividual ,
+                       sf:Point ;
+              geo:asWKT """
+        POINT (-83.1 34.4)
+    """^^geo:wktLiteral .
+
+
+###  http://example.org/ApplicationSchema#C_perimeterLength
+my:C_perimeterLength rdf:type owl:NamedIndividual ,
+                              geo:SpatialMeasure ;
+                     qudt:numericValue "50.42" ;
+                     qudt:unit qudt:MI .
+
+
+###  http://example.org/ApplicationSchema#D
+my:D rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:DExactGeom ;
+     my:hasPointGeometry my:DPointGeom ;
+     geo:ehEquals my:D ;
+     geo:hasCentroid my:DPointGeom ;
+     geo:hasDefaultGeometry my:DExactGeom ;
+     geo:hasGeometry my:DExactGeom ;
+     geo:rcc8eq my:D ;
+     geo:sfEquals my:D ;
+     geo:sfIntersects my:A .
+
+
+###  http://example.org/ApplicationSchema#DExactGeom
+my:DExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Polygon> ,
+                       sf:Polygon ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( '87f15d81effffff', '87f15d81affffff', '87f15d833ffffff', '87f15d9a9ffffff', '87f15d813ffffff', '87f15d814ffffff', '87f15d810ffffff', '87f15d832ffffff', '87f15d8f4ffffff', '87f15d815ffffff', '87f15d811ffffff', '87f15d836ffffff' )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:exterior><gml:LinearRing><gml:posList>-83.3 34.0 -83.1 34.0 -83.1 34.2 -83.3 34.2 -83.3 34.0</gml:posList></gml:LinearRing></gml:exterior></gml:Polygon>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\": \"Polygon\", \"coordinates\": [[[-83.3, 34.0], [-83.1, 34.0], [-83.1, 34.2], [-83.3, 34.2], [-83.3, 34.0]]]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Polygon><outerBoundaryIs><LinearRing><coordinates>-83.3,34.0 -83.1,34.0 -83.1,34.2 -83.3,34.2 -83.3,34.0</coordinates></LinearRing></outerBoundaryIs></Polygon>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-83.3 34.0, -83.1 34.0, -83.1 34.2, -83.3 34.2, -83.3 34.0))
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:hasMetricArea "4.0942717105566406E8"^^xsd:double ;
+              geo:hasMetricPerimeterLength "81280.17043883589"^^xsd:double ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#DPointGeom
+my:DPointGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Point> ,
+                       sf:Point ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( 87f15d810ffffff )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Point xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:pos>-83.2 34.1</gml:pos></gml:Point>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\":\"Point\",\"coordinates\":[-83.2, 34.1]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Point><coordinates>-83.2,34.1</coordinates></Point>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point(-83.2 34.1)
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#E
+my:E rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:EExactGeom ;
+     geo:ehEquals my:E ;
+     geo:hasDefaultGeometry my:EExactGeom ;
+     geo:hasGeometry my:EExactGeom ;
+     geo:rcc8eq my:E ;
+     geo:sfCrosses my:A ;
+     geo:sfEquals my:E .
+
+
+###  http://example.org/ApplicationSchema#EExactGeom
+my:EExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#LineString> ,
+                       sf:LineString ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( 87f15d933ffffff 87f15d9a8ffffff )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:LineString srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\" xmlns:gml=\"http://www.opengis.net/gml\"><gml:posList>-83.4 34.0 -83.3 34.3</gml:posList></gml:LineString>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\": \"LineString\", \"coordinates\": [[-83.4, 34.0], [-83.3, 34.3]]}
+    """^^geo:geoJSONLiteral ;
+       geo:asKML """
+        <LineString><coordinates>-83.4,34.0 -83.3,34.3</coordinates></LineString>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> LineString(-83.4 34.0, -83.3 34.3)
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:hasMetricLength "34531.762814738206"^^xsd:double ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#F
+my:F rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:FExactGeom ;
+     geo:ehEquals my:F ;
+     geo:ehInside my:A ;
+     geo:hasDefaultGeometry my:FExactGeom ;
+     geo:hasGeometry my:FExactGeom ;
+     geo:rcc8eq my:F ;
+     geo:sfEquals my:F .
+
+
+###  http://example.org/ApplicationSchema#FExactGeom
+my:FExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Point> ,
+                       sf:Point ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( 87f14364bffffff )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Point xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:pos>-83.4 34.4</gml:pos></gml:Point>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\":\"Point\",\"coordinates\":[-83.4, 34.4]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Point><coordinates>-83.4,34.4</coordinates></Point>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point(-83.4 34.4)
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#G
+my:G rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:GExactGeom ;
+     my:hasPointGeometry my:GPointGeom ;
+     geo:hasCentroid my:GPointGeom ;
+     geo:hasDefaultGeometry my:GExactGeom ;
+     geo:hasGeometry my:GExactGeom ;
+     geo:rcc8ntpp my:A .
+
+
+###  http://example.org/ApplicationSchema#GExactGeom
+my:GExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Polygon> ,
+                       sf:Polygon ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( '87f15d9acffffff', '87f15d9a8ffffff', '87f15d916ffffff', '87f15d912ffffff', '87f14364dffffff', '87f143649ffffff', '87f14366bffffff', '87f14366cffffff', '87f143668ffffff' )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+
+            <gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:exterior><gml:LinearRing><gml:posList>-83.5 34.2 -83.3 34.2 -83.3 34.4 -83.5 34.4 -83.5 34.2</gml:posList></gml:LinearRing></gml:exterior></gml:Polygon>
+
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\": \"Polygon\", \"coordinates\": [[[-83.5, 34.2], [-83.3, 34.2], [-83.3, 34.4], [-83.5, 34.4], [-83.5, 34.2]]] }
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Polygon><outerBoundaryIs><LinearRing><coordinates>-83.5,34.2 -83.3,34.2 -83.3,34.4 -83.5,34.4 -83.5,34.2</coordinates></LinearRing></outerBoundaryIs></Polygon>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-83.5 34.2, -83.3 34.2, -83.3 34.4, -83.5 34.4, -83.5 34.2))
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:hasMetricArea "4.084748403183899E8"^^xsd:double ;
+              geo:hasMetricPerimeterLength "81194.56311137906"^^xsd:double ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#GPointGeom
+my:GPointGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Point> ,
+                       sf:Point ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( 87f143649ffffff )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Point xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:pos>-83.4 34.3</gml:pos></gml:Point>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\":\"Point\",\"coordinates\":[-83.4, 34.3]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Point><coordinates>-83.4,34.3</coordinates></Point>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point(-83.4 34.3)
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#H
+my:H rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:HExactGeom ;
+     my:hasPointGeometry my:HPointGeom ;
+     geo:hasDefaultGeometry my:HExactGeom ;
+     geo:hasGeometry my:HExactGeom .
+
+
+###  http://example.org/ApplicationSchema#HExactGeom
+my:HExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#LineString> ,
+                       sf:LineString ;
+              geo:asDggs ""^^geo:dggsLiteral ;
+              geo:asGML ""^^geo:gmlLiteral ;
+              geo:asGeoJSON ""^^geo:geoJSONLiteral ;
+              geo:asKML ""^^geo:kmlLiteral ;
+              geo:asWKT ""^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "true"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#HPointGeom
+my:HPointGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Point> ,
+                       sf:Point ;
+              geo:asDggs ""^^geo:dggsLiteral ;
+              geo:asGML ""^^geo:gmlLiteral ;
+              geo:asGeoJSON ""^^geo:geoJSONLiteral ;
+              geo:asKML ""^^geo:kmlLiteral ;
+              geo:asWKT ""^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "true"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#I
+my:I rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:IExactGeom ;
+     my:hasPointGeometry my:IPointGeom ;
+     geo:hasDefaultGeometry my:IExactGeom ;
+     geo:hasGeometry my:IExactGeom .
+
+
+###  http://example.org/ApplicationSchema#IExactGeom
+my:IExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#LineString> ,
+                       sf:LineString ;
+              geo:asDggs """
+        <https://h3geo.org/res/7> CELLLIST()
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+
+            <LineString xmlns=\"http://www.opengis.net/gml\"><posList></posList></LineString>
+
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {"type":"Point","coordinates":[]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Point><coordinates></coordinates></Point>
+    """^^geo:kmlLiteral ;
+              geo:asWKT "LINESTRING EMPTY"^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "true"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#IPointGeom
+my:IPointGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Point> ,
+                       sf:Point ;
+              geo:asDggs """
+        <https://h3geo.org/res/7> CELLLIST()
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+
+            <Point xmlns=\"http://www.opengis.net/gml\"><posList></posList></Point>
+
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Point><coordinates></coordinates></Point>
+    """^^geo:kmlLiteral ;
+              geo:asWKT "POINT EMPTY"^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "true"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#J
+my:J rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:JExactGeom ;
+     geo:hasDefaultGeometry my:JExactGeom ;
+     geo:hasGeometry my:JExactGeom ;
+     geo:hasMetricArea "1.5498362890529633E7"^^xsd:double ;
+     geo:hasMetricPerimeterLength "16296.223177870606"^^xsd:double .
+
+
+###  http://example.org/ApplicationSchema#JExactGeom
+my:JExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Polygon> ,
+                       sf:Polygon ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( '87f042942ffffff', '87f04295cffffff', '87f042946ffffff' )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:exterior><gml:LinearRing><gml:posList>-77.089005 38.913574 -77.029953 38.913574 -77.029953 38.886321 -77.089005 38.886321 -77.089005 38.913574</gml:posList></gml:LinearRing></gml:exterior></gml:Polygon>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        { \"type\": \"Polygon\", \"coordinates\": [[[-77.089005, 38.913574], [-77.029953, 38.913574], [-77.029953, 38.886321], [-77.089005, 38.886321], [-77.089005, 38.913574]]] }
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Polygon><outerBoundaryIs><LinearRing><coordinates>-77.089005,38.913574 -77.029953,38.913574 -77.029953,38.886321 -77.089005,38.886321 -77.089005,38.913574</coordinates></LinearRing></outerBoundaryIs></Polygon>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            Polygon((-77.089005 38.913574,-77.029953 38.913574,-77.029953 38.886321,-77.089005 38.886321,-77.089005 38.913574))
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#K
+my:K rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:KExactGeom ;
+     geo:hasDefaultGeometry my:KExactGeom ;
+     geo:hasGeometry my:KExactGeom ;
+     geo:hasMetricArea "1.5498362890529633E7"^^xsd:double ;
+     geo:hasMetricPerimeterLength "16296.223177870606"^^xsd:double .
+
+
+###  http://example.org/ApplicationSchema#KExactGeom
+my:KExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Polygon> ,
+                       sf:Polygon ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( '87f042942ffffff', '87f04295cffffff', '87f042946ffffff' )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:exterior><gml:LinearRing><gml:posList>-77.089005 38.913574 -77.029953 38.913574 -77.029953 38.886321 -77.089005 38.886321 -77.089005 38.913574</gml:posList></gml:LinearRing></gml:exterior></gml:Polygon>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        { \"type\": \"Polygon\", \"coordinates\": [[[-77.089005, 38.913574], [-77.029953, 38.913574], [-77.029953, 38.886321], [-77.089005, 38.886321], [-77.089005, 38.913574]]] }
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Polygon><outerBoundaryIs><LinearRing><coordinates>-77.089005,38.913574 -77.029953,38.913574 -77.029953,38.886321 -77.089005,38.886321 -77.089005,38.913574</coordinates></LinearRing></outerBoundaryIs></Polygon>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-77.089005 38.913574,-77.029953 38.913574,-77.029953 38.886321,-77.089005 38.886321,-77.089005 38.913574))
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#L
+my:L rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:LExactGeom ;
+     geo:hasDefaultGeometry my:LExactGeom ;
+     geo:hasGeometry my:LExactGeom .
+
+
+###  http://example.org/ApplicationSchema#LExactGeom
+my:LExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Point> ,
+                       sf:Point ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( 87f16608bffffff )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Point xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:pos>-88.38 31.95</gml:pos></gml:Point>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\":\"Point\",\"coordinates\":[-88.38, 31.95]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Point><coordinates>-88.38,31.95</coordinates></Point>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point(-88.38 31.95)
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+
+###  http://example.org/ApplicationSchema#M
+my:M rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:MExactGeom .
+
+
+###  http://example.org/ApplicationSchema#MExactGeom
+my:MExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Point> ,
+                       sf:Point ;
+              geo:asDGGS """
+        <https://h3geo.org/res/7> CELLLIST( 87f16608bffffff )
+    """^^geo:dggsLiteral ;
+              geo:asGML """
+        <gml:Point xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/EPSG/0/4326\"><gml:pos>31.95 -88.38</gml:pos></gml:Point>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        {\"type\":\"Point\",\"coordinates\":[-88.38, 31.95]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Point><coordinates>-88.38,31.95</coordinates></Point>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """
+
+            <http://www.opengis.net/def/crs/EPSG/0/4326> Point(31.95 -88.38)
+
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
+
+###  http://example.org/ApplicationSchema#N
+my:N rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:NExactGeom ;
+     geo:hasDefaultGeometry my:NExactGeom ;
+     geo:hasCentroid my:NPointGeom ;
+     geo:hasGeometry my:NExactGeom  .
+
+
+my:NPointGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Polygon> ,
+                       sf:Polygon ;
+              geo:asGML """
+        <gml:Point xmlns:gml=\"http://www.opengis.net/gml\" gml:srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:pos srsDimension="3">-77.059 38.9 1</gml:pos></gml:Point>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        { \"type\": \"Point\", \"coordinates\": [-77.059, 38.9, 1]}
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Point><coordinates>-77.059,38.9,1</coordinates></Point>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point Z (-77.059 38.9 1)
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 3 ;
+              geo:dimension 3 ;
+              geo:spatialDimension 3 .
+
+###  http://example.org/ApplicationSchema#NExactGeom
+my:NExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Polygon> ,
+                       sf:Polygon ;
+              geo:asGML """
+        <gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\"  gml:srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:exterior><gml:LinearRing><gml:posList srsDimension="3">-77.089005 38.913574 1 -77.029953 38.913574 2 -77.029953 38.886321 2 -77.089005 38.886321 1 -77.089005 38.913574 1</gml:posList></gml:LinearRing></gml:exterior></gml:Polygon>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """
+        { \"type\": \"Polygon\", \"coordinates\": [[[-77.089005, 38.913574,1], [-77.029953, 38.913574,2], [-77.029953, 38.886321,2], [-77.089005, 38.886321,1], [-77.089005, 38.913574,1]]] }
+    """^^geo:geoJSONLiteral ;
+              geo:asKML """
+        <Polygon><outerBoundaryIs><LinearRing><coordinates>-77.089005,38.913574,1 -77.029953,38.913574,1 -77.029953,38.886321,2 -77.089005,38.886321,2 -77.089005,38.913574,1</coordinates></LinearRing></outerBoundaryIs></Polygon>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon Z((-77.089005 38.913574 1,-77.029953 38.913574 2,-77.029953 38.886321 2,-77.089005 38.886321 1,-77.089005 38.913574 1))
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 3 ;
+              geo:dimension 3 ;
+              geo:spatialDimension 3 .
+
+###  http://example.org/ApplicationSchema#N
+my:O rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:OExactGeom ;
+     geo:hasDefaultGeometry my:OExactGeom ;
+     geo:hasGeometry my:OExactGeom  .
+
+
+###  http://example.org/ApplicationSchema#NExactGeom
+my:OExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#Polygon> ,
+                       sf:Polygon ;
+              geo:asGML """
+        <gml:Polygon xmlns:gml=\"http://www.opengis.net/gml\" srsName=\"http://www.opengis.net/def/crs/OGC/1.3/CRS84\"><gml:exterior><gml:LinearRing><gml:posList srsDimension="2">2.47217 47.52403 2.40693 47.49713 2.44607 47.43679 2.57104 47.48553 2.39251 47.44793 2.47217 47.52403</gml:posList></gml:LinearRing></gml:exterior></gml:Polygon>
+    """^^geo:gmlLiteral ;
+              geo:asGeoJSON """{ \"type\": \"Polygon\", \"coordinates\": [[[2.47217,47.52403],[2.40693,47.49713],[2.44607,47.43679],[2.57104,47.48553],[2.39251,47.44793],[2.47217,47.52403]]]}"""^^geo:geoJSONLiteral ;
+              geo:asKML """<Polygon><outerBoundaryIs><LinearRing><coordinates>2.47217,47.52403 2.40693,47.49713 2.44607,47.43679 2.57104,47.48553 2.39251,47.44793 2.47217,47.52403</coordinates></LinearRing></outerBoundaryIs></Polygon>
+    """^^geo:kmlLiteral ;
+              geo:asWKT """<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon ((2.47217 47.52403, 2.40693 47.49713, 2.44607 47.43679, 2.57104 47.48553, 2.39251 47.44793, 2.47217 47.52403))
+    """^^geo:wktLiteral ;
+              geo:coordinateDimension 3 ;
+              geo:dimension 3 ;
+              geo:spatialDimension 3 .
+
+###  http://example.org/ApplicationSchema#N
+my:P rdf:type owl:NamedIndividual ,
+              my:PlaceOfInterest ,
+              geo:Feature ,
+              geo:SpatialObject ;
+     my:hasExactGeometry my:PExactGeom ;
+     geo:hasDefaultGeometry my:PExactGeom ;
+     geo:hasPointGeometry my:PPointGeom ;
+     geo:hasGeometry my:PExactGeom  .
+
+
+###  http://example.org/ApplicationSchema#NExactGeom
+my:PPointGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#LineString> ,
+                       sf:LineString ;
+              geo:asWKT """<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point M (-83.4 34.0 5.0)"""^^geo:wktLiteral  .
+
+###  http://example.org/ApplicationSchema#NExactGeom
+my:PExactGeom rdf:type owl:NamedIndividual ,
+                       geo:Geometry ,
+                       <http://www.opengis.net/ont/gml#LineString> ,
+                       sf:LineString ;
+              geo:asWKT """<http://www.opengis.net/def/crs/OGC/1.3/CRS84> LineString M (-83.4 34.0 5, -83.3 34.3 10)"""^^geo:wktLiteral ;
+              geo:coordinateDimension 2 ;
+              geo:dimension 2 ;
+              geo:hasMetricLength "34531.762814738206"^^xsd:double ;
+              geo:isEmpty "false"^^xsd:boolean ;
+              geo:isSimple "true"^^xsd:boolean ;
+              geo:spatialDimension 2 .
