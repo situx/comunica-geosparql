@@ -1,0 +1,30 @@
+import type {
+  IActionFunctionFactory,
+  IActorFunctionFactoryArgs,
+  IActorFunctionFactoryOutput,
+  IActorFunctionFactoryOutputTerm,
+} from '@comunica/bus-function-factory';
+import {
+  ActorFunctionFactoryDedicated,
+} from '@comunica/bus-function-factory';
+
+import { GeoSparqlExtOperator } from '@comunica/utils-expression-evaluator';
+import { TermFunctionScale } from './TermFunctionScale';
+
+/**
+ * A comunica TermFunctionEnvelope Function Factory Actor.
+ */
+export class ActorFunctionFactoryTermScale extends ActorFunctionFactoryDedicated {
+  public constructor(args: IActorFunctionFactoryArgs) {
+    super({
+      ...args,
+      functionNames: [ GeoSparqlExtOperator.SCALE ],
+      termFunction: true,
+    });
+  }
+
+  public async run<T extends IActionFunctionFactory>(_: T):
+  Promise<T extends { requireTermExpression: true } ? IActorFunctionFactoryOutputTerm : IActorFunctionFactoryOutput> {
+    return new TermFunctionScale();
+  }
+}

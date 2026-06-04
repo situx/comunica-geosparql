@@ -44,6 +44,23 @@
     "@rdfjs/types": "*",
     "lru-cache": "^11.2.2",
     "rdf-data-factory": "^2.0.0",
-    "rdf-string": "^2.0.1"
+    "rdf-string": "^2.0.1",
+    "betterknown": "^1.2.0",
+    "proj4": "^2.20.8",
+    "proj4-list": "^1.0.4",
+    "open-location-code-typescript": "^1.5.0",
+    "geohashing": "^2.0.1",
+    "@xmldom/xmldom": "^0.9.10",
+    "@placemarkio/tokml": "^0.3.9",
+    "@tmcw/togeojson": "^7.1.2",
+    "@types/three": "^0.184.1",
+    "three-obj-exporter": "^0.0.1",
+    "three-stlexporter": "^1.0.0",
+    "three-gltf-exporter": "^0.0.1",
+    "three": "^0.184.0",
+    "three-geojson-geometry": "^2.1.1",
+    "h3-js": "^4.4.0",
+    "wkx-ts": "^1.0.1",
+    "@turf/turf": "^7.3.4"
   }
 }

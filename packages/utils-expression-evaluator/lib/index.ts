@@ -14,6 +14,9 @@ export {
   decimal,
   float,
   expressionToVar,
+  distanceWrapper,
+  rangeOverlaps,
+  unitURIToTurfString,
   Builder,
 } from './functions/Helpers';
 export {
@@ -38,6 +41,8 @@ export {
   TypeURL,
   TypeAlias,
   SparqlOperator,
+  GeoSparqlOperator,
+  GeoSparqlExtOperator,
   NamedOperator,
   GeneralOperator,
   KnownOperator,
@@ -94,6 +99,8 @@ export {
   parseXSDDecimal,
   parseXSDFloat,
   parseDate,
+  parseGeometry,
+  parseGeometryFeature,
 } from './util/Parsing';
 export {
   trimToYearMonthDuration,
