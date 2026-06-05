@@ -1,7 +1,7 @@
 import { TermFunctionBase } from '@comunica/bus-function-factory';
-import {  declare, GeoSparqlExtOperator } from '@comunica/utils-expression-evaluator';
+import {declare, GeoSparqlExtOperator, rangeOverlaps} from '@comunica/utils-expression-evaluator';
 
-import { rangeOverlap } from '@comunica/utils-expression-evaluator/lib/functions/Helpers';
+import {bbox3D, is3D} from '@comunica/utils-expression-evaluator/lib/functions/Helpers';
 import * as turf from '@turf/turf';
 
 /**
@@ -13,13 +13,23 @@ export class TermFunctionAbove extends TermFunctionBase {
       arity: 2,
       operator: GeoSparqlExtOperator.ABOVE,
       overloads: declare(GeoSparqlExtOperator.ABOVE).geometryTestNormalizedCRS(() => (left, right) => {
-        const leftbbox = turf.bbox(left);
-        const rightbbox = turf.bbox(right);
+        let leftbbox;
+        let rightbbox;
+        let zoverlap = true;
+        if (is3D(left) && is3D(right)) {
+          leftbbox = bbox3D(left);
+          rightbbox = bbox3D(right);
+          // eslint-disable-next-line max-len
+          zoverlap = rangeOverlaps(<number>leftbbox.at(2), <number>leftbbox.at(5), <number>rightbbox.at(2), <number>rightbbox.at(5));
+        } else {
+          leftbbox = turf.bbox(left);
+          rightbbox = turf.bbox(right);
+        }
         // eslint-disable-next-line max-len
-        const xoverlap = rangeOverlap(<number>leftbbox.at(0), <number>leftbbox.at(2), <number>rightbbox.at(0), <number>rightbbox.at(2));
+        const xoverlap = rangeOverlaps(<number>leftbbox.at(0), <number>leftbbox.at(2), <number>rightbbox.at(0), <number>rightbbox.at(2));
         const leftmaxY = <number>leftbbox.at(3);
         const rightminY = <number>rightbbox.at(1);
-        return xoverlap > 0 && leftmaxY > rightminY;
+        return xoverlap && zoverlap && leftmaxY > rightminY;
       }).collect(),
     });
   }
