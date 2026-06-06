@@ -16,17 +16,18 @@ export class TermFunctionRightOf extends TermFunctionBase {
         let leftbbox;
         let rightbbox;
         let zoverlap = true;
+        let yoverlap = false;
         if (is3D(left) && is3D(right)) {
           leftbbox = bbox3D(left);
           rightbbox = bbox3D(right);
-          // eslint-disable-next-line max-len
-          zoverlap = rangeOverlaps(<number>leftbbox.at(2), <number>leftbbox.at(5), <number>rightbbox.at(2), <number>rightbbox.at(5));
+          zoverlap = rangeOverlaps(leftbbox[2], leftbbox[5], rightbbox[2], rightbbox[5]);
+          yoverlap = rangeOverlaps(leftbbox[1], leftbbox[4], rightbbox[1], rightbbox[4]);
         } else {
           leftbbox = turf.bbox(left);
           rightbbox = turf.bbox(right);
+          // eslint-disable-next-line max-len
+          yoverlap = rangeOverlaps(<number>leftbbox.at(1), <number>leftbbox.at(3), <number>rightbbox.at(1), <number>rightbbox.at(3));
         }
-        // eslint-disable-next-line max-len
-        const yoverlap = rangeOverlaps(<number>leftbbox.at(1), <number>leftbbox.at(3), <number>rightbbox.at(1), <number>rightbbox.at(3));
         const leftminX = <number>leftbbox.at(0);
         const rightmaxX = <number>rightbbox.at(2);
         return yoverlap && zoverlap && leftminX > rightmaxX;

@@ -1,10 +1,10 @@
-# Comunica Term Function Below Function Factory Actor
+# Comunica Term Function Behind Function Factory Actor
 
 [![npm version](https://badge.fury.io/js/%40comunica%2Factor-function-factory-term-function-is-literal.svg)](https://www.npmjs.com/package/@comunica/actor-function-factory-term-is-literal)
 
 A [function factory](https://github.com/comunica/comunica/tree/master/packages/bus-function-factory) actor
 that constructs a [term function](https://github.com/comunica/comunica/tree/master/packages/bus-function-factory/lib/ActorFunctionFactory.ts)
-capable of evaluating the [below](http://www.opengis.net/def/function/geosparql/below) function.
+capable of evaluating the [behind](http://www.opengis.net/def/function/geosparql/behind) function.
 
 This module is part of the [Comunica framework](https://github.com/comunica/comunica),
 and should only be used by [developers that want to build their own query engine](https://comunica.dev/docs/modify/).
@@ -14,7 +14,7 @@ and should only be used by [developers that want to build their own query engine
 ## Install
 
 ```bash
-$ yarn add @comunica/actor-function-factory-term-below
+$ yarn add @comunica/actor-function-factory-term-behind
 ```
 
 ## Configure
@@ -24,12 +24,12 @@ After installing, this package can be added to your engine's configuration as fo
 {
   "@context": [
     ...
-    "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-function-factory-term-below/^5.0.0/components/context.jsonld"
+    "https://linkedsoftwaredependencies.org/bundles/npm/@comunica/actor-function-factory-term-behind/^5.0.0/components/context.jsonld"
   ],
   "actors": [
     ...
     {
-      "@id": "urn:comunica:default:function-factory/actors#term-function-below",
+      "@id": "urn:comunica:default:function-factory/actors#term-function-behind",
       "@type": "ActorFunctionFactoryTermInFrontOf"
     }
   ]
