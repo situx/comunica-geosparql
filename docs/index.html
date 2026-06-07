@@ -565,6 +565,18 @@ WHERE {
   my:AExactGeom geo:asWKT ?literal .
   BIND(geof:force3D(?literal,"5.0"^^xsd:double) AS ?force3D)
 }`,
+"http://www.opengis.net/def/function/geosparql/ext/fullyWithinDistance":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT (xsd:boolean(?wdistance) as ?wddistance)
+WHERE {
+  my:C geo:hasDefaultGeometry ?cGeom .
+  ?cGeom geo:asWKT ?cLiteral .
+  my:F geo:hasDefaultGeometry ?fGeom .
+  ?fGeom geo:asWKT ?fLiteral .
+  BIND (geof:fullyWithinDistance(?cLiteral, ?fLiteral,"5.0"^^xsd:double,"http://www.ontology-of-units-of-measure.org/resource/om-2/mile"^^xsd:anyURI) as ?wdistance)
+}`,
 "http://www.opengis.net/def/function/geosparql/geometryN":`PREFIX my: <http://example.org/ApplicationSchema#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
