@@ -333,10 +333,12 @@ WHERE {
 "http://www.opengis.net/def/function/geosparql/centroid":`PREFIX my: <http://example.org/ApplicationSchema#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
-SELECT ?literal ?centroid
+PREFIX geofext: <http://www.opengis.net/def/function/geosparql/ext/>
+SELECT ?literal ?centroid ?centroid3d
 WHERE {
   my:AExactGeom geo:asWKT ?literal .
   BIND(geof:centroid(?literal) AS ?centroid)
+  BIND(geof:centroid(geofext:force3D(?literal,"5")) AS ?centroid3d)
 }`,
 "http://www.opengis.net/def/function/geosparql/ext/clipByRect":`PREFIX my: <http://example.org/ApplicationSchema#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
