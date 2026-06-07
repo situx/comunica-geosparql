@@ -12,7 +12,7 @@ describe('like \'rotate\' receiving', () => {
       args => new ActorFunctionFactoryTermRotate(args),
       args => new ActorFunctionFactoryExpressionBnode(args),
     ],
-    arity: 1,
+    arity: 2,
     aliases: bool,
     notation: Notation.Function,
     operation: 'rotate',

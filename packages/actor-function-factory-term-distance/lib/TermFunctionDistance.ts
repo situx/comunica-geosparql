@@ -14,7 +14,7 @@ import * as turf from '@turf/turf';
 export class TermFunctionDistance extends TermFunctionBase {
   public constructor() {
     super({
-      arity: 2,
+      arity: 3,
       operator: GeoSparqlOperator.DISTANCE,
       overloads: declare(GeoSparqlOperator.DISTANCE).geometryFuncNormalizedCRS(() => (left, right) => {
         if (left.type === 'Point' && right.type === 'Point') {

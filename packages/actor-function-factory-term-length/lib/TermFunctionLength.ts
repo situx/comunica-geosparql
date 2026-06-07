@@ -5,7 +5,7 @@ import {
   GeoSparqlOperator,
   unitURIToTurfString,
 } from '@comunica/utils-expression-evaluator';
-import {is3D, length3D} from '@comunica/utils-expression-evaluator/lib/functions/Helpers';
+import {is3D, length3D} from '@comunica/utils-expression-evaluator/lib/functions/GeoHelpers';
 import * as turf from '@turf/turf';
 import type { Units } from '@turf/turf';
 

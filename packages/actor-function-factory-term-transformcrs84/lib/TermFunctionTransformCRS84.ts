@@ -1,7 +1,7 @@
 import { TermFunctionBase } from '@comunica/bus-function-factory';
 import { declare, GeoSparqlExtOperator } from '@comunica/utils-expression-evaluator';
 
-import { transformGeometryLiteralCRS84 } from '@comunica/utils-expression-evaluator/lib/functions/Helpers';
+import { transformGeometryLiteralCRS84 } from '@comunica/utils-expression-evaluator/lib/functions/GeoHelpers';
 import { serializeGeometry } from '@comunica/utils-expression-evaluator/lib/util/Serialization';
 
 /**

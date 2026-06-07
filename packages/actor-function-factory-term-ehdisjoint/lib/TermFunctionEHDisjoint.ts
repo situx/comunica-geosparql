@@ -1,7 +1,7 @@
 import { TermFunctionBase } from '@comunica/bus-function-factory';
 import {declare, GeoSparqlOperator} from '@comunica/utils-expression-evaluator';
 
-import {distance3DGeoms, is3D} from '@comunica/utils-expression-evaluator/lib/functions/Helpers';
+import {distance3DGeoms, is3D} from '@comunica/utils-expression-evaluator/lib/functions/GeoHelpers';
 import * as turf from '@turf/turf';
 
 /**

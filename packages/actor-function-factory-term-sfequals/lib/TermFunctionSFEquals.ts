@@ -1,5 +1,5 @@
 import { TermFunctionBase } from '@comunica/bus-function-factory';
-import {bool, declare, GeoSparqlOperator} from '@comunica/utils-expression-evaluator';
+import {declare, GeoSparqlOperator} from '@comunica/utils-expression-evaluator';
 
 import * as turf from '@turf/turf';
 

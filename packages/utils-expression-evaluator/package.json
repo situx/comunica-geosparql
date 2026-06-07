@@ -61,6 +61,7 @@
     "three-geojson-geometry": "^2.1.1",
     "h3-js": "^4.4.0",
     "wkx-ts": "^1.0.1",
-    "@turf/turf": "^7.3.4"
+    "@turf/turf": "^7.3.4",
+    "smallest-circle": "^0.1.0"
   }
 }

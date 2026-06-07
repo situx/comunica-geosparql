@@ -5,7 +5,7 @@ import {
   GeoSparqlOperator,
 } from '@comunica/utils-expression-evaluator';
 
-import { length3D } from '@comunica/utils-expression-evaluator/lib/functions/Helpers';
+import { length3D } from '@comunica/utils-expression-evaluator/lib/functions/GeoHelpers';
 import * as turf from '@turf/turf';
 
 /**

@@ -6,7 +6,7 @@ import { bool } from '@comunica/utils-expression-evaluator/test/util/Aliases';
 import { Notation } from '@comunica/utils-expression-evaluator/test/util/TestTable';
 import { ActorFunctionFactoryTermGetSRID } from '../lib';
 
-describe('like \'geometryType\' receiving', () => {
+describe('like \'getSRID\' receiving', () => {
   runFuncTestTable({
     registeredActors: [
       args => new ActorFunctionFactoryTermGetSRID(args),
@@ -15,7 +15,7 @@ describe('like \'geometryType\' receiving', () => {
     arity: 1,
     aliases: bool,
     notation: Notation.Function,
-    operation: 'geometryType',
+    operation: 'getSRID',
     testTable: `
         "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Polygon((-83.6 34.1, -83.2 34.1, -83.2 34.5, -83.6 34.5, -83.6 34.1))"^^<http://www.opengis.net/ont/geosparql#wktLiteral> = "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
       `,

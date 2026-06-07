@@ -1,11 +1,10 @@
 import { TermFunctionBase } from '@comunica/bus-function-factory';
 import {
   declare,
-  distanceWrapper,
   double,
   GeoSparqlExtOperator,
 } from '@comunica/utils-expression-evaluator';
-import * as turf from '@turf/turf';
+import { maxDistanceCalc } from '@comunica/utils-expression-evaluator/lib/functions/GeoHelpers';
 
 
 /**
@@ -16,18 +15,8 @@ export class TermFunctionMaxDistance extends TermFunctionBase {
     super({
       arity: 2,
       operator: GeoSparqlExtOperator.MAXDISTANCE,
-      overloads: declare(GeoSparqlExtOperator.MAXDISTANCE).geometryFuncNormalizedCRS(() => (left, right) => {
-        let maxDistance = Number.MIN_VALUE;
-        turf.coordEach(left, (currentCoord, _coordIndex) => {
-          turf.coordEach(right, (currentCoord1, _coordIndex1) => {
-            const curdist = distanceWrapper(currentCoord, currentCoord1);
-            if (curdist > maxDistance) {
-              maxDistance = curdist;
-            }
-          });
-        });
-        return double(maxDistance);
-      }).collect(),
+      // eslint-disable-next-line max-len
+      overloads: declare(GeoSparqlExtOperator.MAXDISTANCE).geometryFuncNormalizedCRS(() => (left, right) => double(maxDistanceCalc(left, right))).collect(),
     });
   }
 }

@@ -1,7 +1,7 @@
 import { TermFunctionBase } from '@comunica/bus-function-factory';
 import {declare, ExpressionError, GeoSparqlExtOperator} from '@comunica/utils-expression-evaluator';
 
-import {bbox3D, is3D, rangeOverlaps} from '@comunica/utils-expression-evaluator/lib/functions/Helpers';
+import {bbox3D, is3D, rangeOverlaps} from '@comunica/utils-expression-evaluator/lib/functions/GeoHelpers';
 
 /**
  * http://www.opengis.net/def/function/geosparql/behind

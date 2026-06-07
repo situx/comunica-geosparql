@@ -5,7 +5,7 @@ import {
   bool,
 } from '@comunica/utils-expression-evaluator';
 
-import { is3D } from '@comunica/utils-expression-evaluator/lib/functions/Helpers';
+import { is3D } from '@comunica/utils-expression-evaluator/lib/functions/GeoHelpers';
 
 /**
  * http://www.opengis.net/def/function/geosparql/is3D

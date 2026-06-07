@@ -1,7 +1,7 @@
 import { TermFunctionBase } from '@comunica/bus-function-factory';
 import { declare, GeoSparqlExtOperator } from '@comunica/utils-expression-evaluator';
 
-import {bbox3D, is3D, rangeOverlaps} from '@comunica/utils-expression-evaluator/lib/functions/Helpers';
+import {bbox3D, is3D, rangeOverlaps} from '@comunica/utils-expression-evaluator/lib/functions/GeoHelpers';
 import * as turf from '@turf/turf';
 
 /**

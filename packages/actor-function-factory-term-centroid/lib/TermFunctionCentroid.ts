@@ -1,9 +1,9 @@
 import { TermFunctionBase } from '@comunica/bus-function-factory';
 import { declare, GeoSparqlOperator } from '@comunica/utils-expression-evaluator';
 
+import {is3D} from "@comunica/utils-expression-evaluator/lib/functions/GeoHelpers";
 import { serializeGeometry } from '@comunica/utils-expression-evaluator/lib/util/Serialization';
 import * as turf from '@turf/turf';
-import {is3D} from "@comunica/utils-expression-evaluator/lib/functions/Helpers";
 
 /**
  * http://www.opengis.net/def/function/geosparql/centroid

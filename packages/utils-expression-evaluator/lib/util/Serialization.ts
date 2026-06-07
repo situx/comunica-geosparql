@@ -21,7 +21,7 @@ import { OBJExporter } from 'three/examples/jsm/exporters/OBJExporter';
 import { PLYExporter } from 'three/examples/jsm/exporters/PLYExporter';
 import * as wkxx from 'wkx-ts';
 import { StringLiteral } from '../expressions';
-import { extrudeGeometry3D } from '../functions/Helpers';
+import { extrudeGeometry3D } from '../functions/GeoHelpers';
 
 function numSerializer(num: number, min = 2): string {
   return num.toLocaleString(undefined, { minimumIntegerDigits: min, useGrouping: false });

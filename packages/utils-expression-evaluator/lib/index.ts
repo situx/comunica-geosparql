@@ -14,11 +14,14 @@ export {
   decimal,
   float,
   expressionToVar,
-  distanceWrapper,
-  rangeOverlaps,
-  unitURIToTurfString,
   Builder,
 } from './functions/Helpers';
+export {
+  distanceWrapper,
+  rangeOverlaps,
+  maxDistanceCalc,
+  unitURIToTurfString,
+} from './functions/GeoHelpers';
 export {
   ExpressionError,
   isExpressionError,

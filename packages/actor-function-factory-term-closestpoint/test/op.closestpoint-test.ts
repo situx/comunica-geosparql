@@ -12,7 +12,7 @@ describe('like \'closestPoint\' receiving', () => {
       args => new ActorFunctionFactoryTermClosestPoint(args),
       args => new ActorFunctionFactoryExpressionBnode(args),
     ],
-    arity: 1,
+    arity: 2,
     aliases: bool,
     notation: Notation.Function,
     operation: 'closestPoint',

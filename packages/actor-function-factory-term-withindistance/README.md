@@ -30,7 +30,7 @@ After installing, this package can be added to your engine's configuration as fo
     ...
     {
       "@id": "urn:comunica:default:function-factory/actors#term-function-withindistance",
-      "@type": "ActorFunctionFactoryTermWithinDistance"
+      "@type": "ActorFunctionFactoryTermFullyWithinDistance"
     }
   ]
 }

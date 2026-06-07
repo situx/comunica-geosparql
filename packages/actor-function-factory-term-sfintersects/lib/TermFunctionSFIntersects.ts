@@ -5,7 +5,7 @@ import {
   GeoSparqlOperator,
 } from '@comunica/utils-expression-evaluator';
 
-import {distance3DGeoms, is3D} from '@comunica/utils-expression-evaluator/lib/functions/Helpers';
+import {intersects3D, is3D} from '@comunica/utils-expression-evaluator/lib/functions/GeoHelpers';
 import * as turf from '@turf/turf';
 
 /**
@@ -18,7 +18,7 @@ export class TermFunctionSFIntersects extends TermFunctionBase {
       operator: GeoSparqlOperator.SFINTERSECTS,
       overloads: declare(GeoSparqlOperator.SFINTERSECTS).geometryTestNormalizedCRS(() => (left, right) => {
         if (is3D(left) && is3D(right)) {
-          return distance3DGeoms(left, right) === 0;
+          return intersects3D(left, right);
         }
         return turf.booleanIntersects(left, right);
       }).collect(),
