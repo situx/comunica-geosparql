@@ -38662,9 +38662,6 @@ void main() {
       await this.update3DView();
     }
     fitCameraToSelection(camera, controls, selection, fitOffset = 1.2) {
-	  this.size = new THREE.Vector3();
-      this.center = new THREE.Vector3();
-      this.box = new THREE.Box3();
       this.box.makeEmpty();
       for (const object of selection) {
         this.box.expandByObject(object);
