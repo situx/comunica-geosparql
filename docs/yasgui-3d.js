@@ -38661,7 +38661,7 @@ void main() {
       this.updateColumns();
       await this.update3DView();
     }
-    fitCameraToSelection(camera, controls, selection, fitOffset = 1.5) {
+    fitCameraToSelection(camera, controls, selection, fitOffset = 1.2) {
       this.box.makeEmpty();
       for (const object of selection) {
         this.box.expandByObject(object);
@@ -38673,7 +38673,7 @@ void main() {
       const fitWidthDistance = fitHeightDistance / this.camera.aspect;
       const distance = fitOffset * Math.max(fitHeightDistance, fitWidthDistance);
       const direction = this.controls.target.clone().sub(this.camera.position).normalize().multiplyScalar(distance);
-      this.controls.maxDistance = distance * 25;
+      this.controls.maxDistance = distance * 10;
       this.controls.target.copy(this.center);
       this.camera.near = distance / 100;
       this.camera.far = distance * 100;
