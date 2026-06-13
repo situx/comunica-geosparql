@@ -38673,10 +38673,10 @@ void main() {
       const fitWidthDistance = fitHeightDistance / this.camera.aspect;
       const distance = fitOffset * Math.max(fitHeightDistance, fitWidthDistance);
       const direction = this.controls.target.clone().sub(this.camera.position).normalize().multiplyScalar(distance);
-      this.controls.maxDistance = distance * 100;
+      this.controls.maxDistance = distance * 25;
       this.controls.target.copy(this.center);
       this.camera.near = distance / 100;
-      this.camera.far = distance * 250;
+      this.camera.far = distance * 100;
       this.camera.updateProjectionMatrix();
       this.camera.position.copy(this.controls.target).sub(direction);
     }
