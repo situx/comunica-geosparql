@@ -64,6 +64,7 @@
 		"http://www.opengis.net/def/function/geosparql/geometryType":"geof:geometryType",
 		"http://www.opengis.net/def/function/geosparql/getSRID":"geof:getSRID",
 		"http://www.opengis.net/def/function/geosparql/ext/inFrontOf":"geofext:inFrontOf",
+		"http://www.opengis.net/def/function/geosparql/ext/hausdorffDistance":"geofext:hausdorffDistance",
 		"http://www.opengis.net/def/function/geosparql/intersection":"geof:intersection",
 		"http://www.opengis.net/def/function/geosparql/is3D":"geof:is3D",
 		"http://www.opengis.net/def/function/geosparql/ext/isCCW":"geofext:isCCW",
@@ -132,6 +133,8 @@
 		"http://www.opengis.net/def/function/geosparql/transformCRS84":"geofext:transformCRS84",
         "http://www.opengis.net/def/function/geosparql/ext/translate":"geofext:translate",
 		"http://www.opengis.net/def/function/geosparql/ext/withinDistance":"geofext:withinDistance",
+		"http://www.opengis.net/def/function/geosparql/ext/voronoiLines":"geofext:voronoiLines",
+		"http://www.opengis.net/def/function/geosparql/ext/voronoiPolygons":"geofext:voronoiPolygons",
 		"http://www.opengis.net/def/function/geosparql/ext/X":"geofext:X",
 		"http://www.opengis.net/def/function/geosparql/ext/Y":"geofext:Y",
 		"http://www.opengis.net/def/function/geosparql/ext/Z":"geofext:Z"
@@ -410,6 +413,15 @@ WHERE {
   ?dGeom geo:asWKT ?dLiteral .
   BIND (geof:difference(?aLiteral, ?dLiteral) as ?difference)
 }`,
+"http://www.opengis.net/def/function/geosparql/ext/delaunayTriangles":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <"""+str(GEO)+""">
+PREFIX geof: <"""+str(GEOFEXT)+""">
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?delau
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:delaunayTriangles(?literal) AS ?delau)
+}`,
 "http://www.opengis.net/def/function/geosparql/dimension":`PREFIX my: <http://example.org/ApplicationSchema#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
@@ -603,6 +615,18 @@ WHERE {
   my:A geo:hasDefaultGeometry ?geom .
   ?geom geo:asWKT ?literal .
   BIND (geof:getSRID(?literal) as ?srid)
+}`,
+"http://www.opengis.net/def/function/ext/geosparql/hausdorffDistance":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <"""+str(GEO)+""">
+PREFIX geof: <"""+str(GEOFEXT)+""">
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?cLiteral ?fLiteral ?hdistance
+WHERE {
+  my:C geo:hasDefaultGeometry ?cGeom .
+  ?cGeom geo:asWKT ?cLiteral .
+  my:F geo:hasDefaultGeometry ?fGeom .
+  ?fGeom geo:asWKT ?fLiteral .
+  BIND (geof:hausdorffDistance(?cLiteral, ?fLiteral) as ?hdistance)
 }`,
 "http://www.opengis.net/def/function/geosparql/intersection":`
 PREFIX my: <http://example.org/ApplicationSchema#>
@@ -1293,6 +1317,24 @@ WHERE {
   my:D geo:hasDefaultGeometry ?dGeom .
   ?dGeom geo:asWKT ?geom2 .
   BIND (geof:union(?geom1, ?geom2) as ?union)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/voronoiLines":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <"""+str(GEO)+""">
+PREFIX geof: <"""+str(GEOFEXT)+""">
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?voro
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:voronoiLines(?literal) AS ?voro)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/voronoiPolygons":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <"""+str(GEO)+""">
+PREFIX geof: <"""+str(GEOFEXT)+""">
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?voro
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:voronoiPolygons(?literal) AS ?voro)
 }`,
 "http://www.opengis.net/def/function/geosparql/ext/withinDistance":`PREFIX my: <http://example.org/ApplicationSchema#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
