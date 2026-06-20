@@ -45,6 +45,7 @@
 		"http://www.opengis.net/def/function/geosparql/concaveHull":"geof:concaveHull",
 		"http://www.opengis.net/def/function/geosparql/convexHull":"geof:convexHull",
 		"http://www.opengis.net/def/function/geosparql/coordinateDimension":"geof:coordinateDimension",
+		"http://www.opengis.net/def/function/geosparql/ext/delaunayTriangles":"geofext:delaunayTriangles",
 		"http://www.opengis.net/def/function/geosparql/difference":"geof:difference",
         "http://www.opengis.net/def/function/geosparql/distance":"geof:distance",
 		"http://www.opengis.net/def/function/geosparql/ehContains":"geof:ehContains",
@@ -414,8 +415,8 @@ WHERE {
   BIND (geof:difference(?aLiteral, ?dLiteral) as ?difference)
 }`,
 "http://www.opengis.net/def/function/geosparql/ext/delaunayTriangles":`PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <"""+str(GEO)+""">
-PREFIX geof: <"""+str(GEOFEXT)+""">
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT ?literal ?delau
 WHERE {
@@ -617,8 +618,8 @@ WHERE {
   BIND (geof:getSRID(?literal) as ?srid)
 }`,
 "http://www.opengis.net/def/function/ext/geosparql/hausdorffDistance":`PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <"""+str(GEO)+""">
-PREFIX geof: <"""+str(GEOFEXT)+""">
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT ?cLiteral ?fLiteral ?hdistance
 WHERE {
@@ -1319,8 +1320,8 @@ WHERE {
   BIND (geof:union(?geom1, ?geom2) as ?union)
 }`,
 "http://www.opengis.net/def/function/geosparql/ext/voronoiLines":`PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <"""+str(GEO)+""">
-PREFIX geof: <"""+str(GEOFEXT)+""">
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT ?literal ?voro
 WHERE {
@@ -1328,8 +1329,8 @@ WHERE {
   BIND(geof:voronoiLines(?literal) AS ?voro)
 }`,
 "http://www.opengis.net/def/function/geosparql/ext/voronoiPolygons":`PREFIX my: <http://example.org/ApplicationSchema#>
-PREFIX geo: <"""+str(GEO)+""">
-PREFIX geof: <"""+str(GEOFEXT)+""">
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT ?literal ?voro
 WHERE {
