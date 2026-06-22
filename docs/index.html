@@ -20,6 +20,8 @@
 <script>
     geof={
 		"http://www.opengis.net/def/function/geosparql/ext/above":"geofext:above",
+		"http://www.opengis.net/def/function/geosparql/ext/addPoint":"geofext:addPoint",
+		"http://www.opengis.net/def/function/geosparql/ext/appendPoint":"geofext:appendPoint",
 		"http://www.opengis.net/def/function/geosparql/area":"geof:area",
 		"http://www.opengis.net/def/function/geosparql/asDGGS":"geof:asDGGS",
 		"http://www.opengis.net/def/function/geosparql/ext/asGeoCode":"geofext:asGeoCode",
@@ -153,6 +155,24 @@ WHERE {
   BIND("Polygon((-83.3 33.0, -83.1 33.0, -83.1 33.2, -83.3 33.2, -83.3 33.0))"^^geo:wktLiteral AS ?geom2)
   BIND (geof:above(?geom1, ?geom2) as ?nabovee)
   BIND (geof:above(?geom2, ?geom1) as ?abovee)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/addPoint":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?added
+WHERE {
+  BIND("POLYGON ((-83.6 34.1, -83.6 34.5, -83.2 34.5, -83.2 34.1, -83.6 34.1))"^^geo:wktLiteral AS ?literal)
+  BIND(geof:addPoint(?literal,"POINT(-84.2 33.5)"^^geo:wktLiteral,2) AS ?added)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/appendPoint":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?appended
+WHERE {
+  BIND("POLYGON ((-83.6 34.1, -83.6 34.5, -83.2 34.5, -83.2 34.1, -83.6 34.1))"^^geo:wktLiteral AS ?literal)
+  BIND(geof:appendPoint(?literal,"POINT(-84.2 33.5)"^^geo:wktLiteral) AS ?appended)
 }`,
 "http://www.opengis.net/def/function/geosparql/area":`PREFIX my: <http://example.org/ApplicationSchema#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
