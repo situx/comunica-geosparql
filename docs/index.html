@@ -1324,19 +1324,19 @@ WHERE {
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-SELECT ?literal ?voro
+SELECT ?literal ?voroL
 WHERE {
   my:AExactGeom geo:asWKT ?literal .
-  BIND(geof:voronoiLines(?literal) AS ?voro)
+  BIND(geof:voronoiLines(?literal) AS ?voroL)
 }`,
 "http://www.opengis.net/def/function/geosparql/ext/voronoiPolygons":`PREFIX my: <http://example.org/ApplicationSchema#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-SELECT ?literal ?voro
+SELECT ?literal ?voroP
 WHERE {
   my:AExactGeom geo:asWKT ?literal .
-  BIND(geof:voronoiPolygons(?literal) AS ?voro)
+  BIND(geof:voronoiPolygons(?literal) AS ?voroP)
 }`,
 "http://www.opengis.net/def/function/geosparql/ext/withinDistance":`PREFIX my: <http://example.org/ApplicationSchema#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
