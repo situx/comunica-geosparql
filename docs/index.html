@@ -148,7 +148,7 @@
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-SELECT ?geom1 ?geom2 (xsd:boolean(?abovee) as ?above) (xsd:boolean(?nabovee) as ?notabove)
+SELECT ?geom1 ?geom2 (xsd:boolean(?abovee) as ?G2_above_G1) (xsd:boolean(?nabovee) as ?G1_above_G2)
 WHERE {
   my:A geo:hasDefaultGeometry ?aGeom .
   ?aGeom geo:asWKT ?geom1 .
