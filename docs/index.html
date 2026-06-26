@@ -26,6 +26,7 @@
 		"http://www.opengis.net/def/function/geosparql/asDGGS":"geof:asDGGS",
 		"http://www.opengis.net/def/function/geosparql/ext/asGeoCode":"geofext:asGeoCode",
 		"http://www.opengis.net/def/function/geosparql/asGeoJSON":"geof:asGeoJSON",
+		"http://www.opengis.net/def/function/geosparql/ext/asGeoYAML":"geofext:asGeoYAML",
 		"http://www.opengis.net/def/function/geosparql/ext/asGLTF":"geofext:asGLTF",
 		"http://www.opengis.net/def/function/geosparql/asGML":"geof:asGML",
 		"http://www.opengis.net/def/function/geosparql/ext/asJSONFG":"geofext:asJSONFG",
@@ -47,6 +48,7 @@
 		"http://www.opengis.net/def/function/geosparql/concaveHull":"geof:concaveHull",
 		"http://www.opengis.net/def/function/geosparql/convexHull":"geof:convexHull",
 		"http://www.opengis.net/def/function/geosparql/coordinateDimension":"geof:coordinateDimension",
+		"http://www.opengis.net/def/function/geosparql/ext/curveToLine":"geofext:curveToLine",
 		"http://www.opengis.net/def/function/geosparql/ext/delaunayTriangles":"geofext:delaunayTriangles",
 		"http://www.opengis.net/def/function/geosparql/difference":"geof:difference",
         "http://www.opengis.net/def/function/geosparql/distance":"geof:distance",
@@ -83,6 +85,7 @@
 		"http://www.opengis.net/def/function/geosparql/ext/isValid":"geofext:isValid",
 		"http://www.opengis.net/def/function/geosparql/ext/leftOf":"geofext:leftOf",
 		"http://www.opengis.net/def/function/geosparql/ext/longestLine":"geofext:longestLine",
+		"http://www.opengis.net/def/function/geosparql/ext/makeValid":"geofext:makeValid",
 		"http://www.opengis.net/def/function/geosparql/ext/maxDistance":"geofext:maxDistance",
 		"http://www.opengis.net/def/function/geosparql/maxX":"geof:maxX",
         "http://www.opengis.net/def/function/geosparql/maxY":"geof:maxY",
@@ -216,6 +219,16 @@ WHERE {
   ?aGeom geo:asWKT ?aLiteral .
   BIND (geof:asGeoJSON(?aLiteral) as ?asGeoJSON)
 }`,
+"http://www.opengis.net/def/function/geosparql/asGeoYAML":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?aLiteral ?asGeoYAML
+WHERE {
+  my:A geo:hasDefaultGeometry ?aGeom .
+  ?aGeom geo:asWKT ?aLiteral .
+  BIND (geof:asGeoYAML(?aLiteral) as ?asGeoYAML)
+}`,
 "http://www.opengis.net/def/function/geosparql/ext/asGLTF":`PREFIX my: <http://example.org/ApplicationSchema#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
@@ -317,7 +330,7 @@ WHERE {
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-SELECT ?geom1 ?geom2 (xsd:boolean(?beloww) as ?below) (xsd:boolean(?nbeloww) as ?notbelow)
+SELECT ?geom1 ?geom2 (xsd:boolean(?beloww) as ?G1_below_G2) (xsd:boolean(?nbeloww) as ?G2_below_G1)
 WHERE {
   my:A geo:hasDefaultGeometry ?aGeom .
   ?aGeom geo:asWKT ?geom1 .
@@ -422,6 +435,15 @@ SELECT ?literal ?coordinateDimension
 WHERE {
   my:AExactGeom geo:asWKT ?literal .
   BIND(geof:coordinateDimension(?literal) AS ?coordinateDimension)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/curveToLine":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?literal ?line
+WHERE {
+  my:AExactGeom geo:asWKT ?literal .
+  BIND(geof:curveToLine(?literal) AS ?line)
 }`,
 "http://www.opengis.net/def/function/geosparql/difference":`PREFIX my: <http://example.org/ApplicationSchema#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
@@ -767,7 +789,7 @@ SELECT ?a_wkt ?isValid ?isNotValid {
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-SELECT ?geom1 ?geom2 (xsd:boolean(?leftt) as ?left) (xsd:boolean(?nleftt) as ?notleft)
+SELECT ?geom1 ?geom2 (xsd:boolean(?leftt) as ?G1_leftOf_G2) (xsd:boolean(?nleftt) as ?G2_leftOf_G1)
 WHERE {
   my:A geo:hasDefaultGeometry ?aGeom .
   ?aGeom geo:asWKT ?aLiteral .
@@ -797,6 +819,14 @@ WHERE {
   my:D geo:hasDefaultGeometry ?dGeom .
   ?dGeom geo:asWKT ?geom2 .
   BIND (geof:longestLine(?geom1, ?geom2) as ?longestLine)
+}`,
+"http://www.opengis.net/def/function/geosparql/ext/makeValid":`PREFIX my: <http://example.org/ApplicationSchema#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?a_wkt ?isValid ?nowValid {
+	BIND("POLYGON((0 0, 10 10, 0 10, 10 0, 0 0))"^^geo:wktLiteral AS ?notValid)
+	BIND(geof:makeValid(?notvalid) AS ?nowValid)
 }`,
 "http://www.opengis.net/def/function/geosparql/ext/maxDistance":`PREFIX my: <http://example.org/ApplicationSchema#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
@@ -1119,7 +1149,7 @@ WHERE {
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-SELECT ?geom1 ?geom2 (xsd:boolean(?rightt) as ?right) (xsd:boolean(?nrightt) as ?notright)
+SELECT ?geom1 ?geom2 (xsd:boolean(?rightt) as ?G2_rightOf_G1) (xsd:boolean(?nrightt) as ?G1_rightOf_G2)
 WHERE {
   my:A geo:hasDefaultGeometry ?aGeom .
   ?aGeom geo:asWKT ?geom1 .
