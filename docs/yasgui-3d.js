@@ -38661,7 +38661,36 @@ void main() {
       this.updateColumns();
       await this.update3DView();
     }
-    fitCameraToSelection(camera, controls, selection, fitOffset = 1.2) {
+    /*
+    
+      let mousePointer = new THREE.Vector2();
+      onMouseMove(event) {
+        const raycaster = new THREE.Raycaster();
+        let mousePointer = new THREE.Vector2()
+    
+        mousePointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mousePointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    
+        const getFirstValue = true;
+    
+        raycaster.setFromCamera(mousePointer, this.camera);
+    
+        let intersections = raycaster.intersectObjects(this.scene.children, true);
+    
+        intersections = getFirstValue ? intersections[0] : intersections;
+    
+        if(!Array.isArray(intersections)){
+          const objectName = intersections.object.name || "Unnamed Object";
+        }
+    
+        intersections.forEach((object) => {
+          const objectName = object.object.name || "Unnamed Object";
+        });
+    
+        const cardList = getCardObjects(intersections);
+        flipCards(cardList, flippedCardsList);
+      }*/
+    fitCameraToSelection(camera, controls, selection, fitOffset = 1.25) {
       this.box.makeEmpty();
       for (const object of selection) {
         this.box.expandByObject(object);
@@ -38669,17 +38698,16 @@ void main() {
       this.box.getSize(this.size);
       this.box.getCenter(this.center);
       const maxSize = Math.max(this.size.x, this.size.y, this.size.z);
-      const fitHeightDistance = maxSize / (2 * Math.atan(Math.PI * this.camera.fov / 360));
-      const fitWidthDistance = fitHeightDistance / this.camera.aspect;
+      const fitHeightDistance = maxSize / (2 * Math.atan(Math.PI * camera.fov / 360));
+      const fitWidthDistance = fitHeightDistance / camera.aspect;
       const distance = fitOffset * Math.max(fitHeightDistance, fitWidthDistance);
-      const direction = this.controls.target.clone().sub(this.camera.position).normalize().multiplyScalar(distance);
-      this.controls.maxDistance = distance * 10;
-      this.controls.target.copy(this.center);
-      this.camera.near = distance / 100;
-      this.camera.far = distance * 100;
-      this.camera.updateProjectionMatrix();
-      this.camera.position.copy(this.controls.target).sub(direction);
-	  //this.controls.update();
+      const direction = controls.target.clone().sub(camera.position).normalize().multiplyScalar(distance);
+      controls.maxDistance = distance * 10;
+      controls.target.copy(this.center);
+      camera.near = distance / 100;
+      camera.far = distance * 100;
+      camera.updateProjectionMatrix();
+      camera.position.copy(controls.target).sub(direction);
     }
     async initThreeJS(domelement, verts, meshurls) {
       let loader;
