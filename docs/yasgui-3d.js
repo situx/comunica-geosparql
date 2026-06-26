@@ -38707,6 +38707,12 @@ void main() {
       camera.near = distance / 100;
       camera.far = distance * 100;
       camera.updateProjectionMatrix();
+      camera.position.set(
+        this.center.x * camera.far / camera.near,
+        this.center.y * camera.far / camera.near,
+        this.center.z * camera.far / camera.near
+      );
+      camera.lookAt(this.center);
       camera.position.copy(controls.target).sub(direction);
     }
     async initThreeJS(domelement, verts, meshurls) {
