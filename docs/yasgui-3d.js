@@ -38712,7 +38712,7 @@ void main() {
       camera.updateProjectionMatrix();
       cameraZ *= fitOffset;
       camera.position.z = cameraZ;
-      camera.lookAt(this.center);
+      camera.position.copy(controls.target).sub(direction);
     }
     async initThreeJS(domelement, verts, meshurls) {
       let loader;
