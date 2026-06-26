@@ -219,9 +219,9 @@ WHERE {
   ?aGeom geo:asWKT ?aLiteral .
   BIND (geof:asGeoJSON(?aLiteral) as ?asGeoJSON)
 }`,
-"http://www.opengis.net/def/function/geosparql/asGeoYAML":`PREFIX my: <http://example.org/ApplicationSchema#>
+"http://www.opengis.net/def/function/geosparql/ext/asGeoYAML":`PREFIX my: <http://example.org/ApplicationSchema#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX geof: <http://www.opengis.net/def/function/geosparql/>
+PREFIX geof: <http://www.opengis.net/def/function/geosparql/ext/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT ?aLiteral ?asGeoYAML
 WHERE {
