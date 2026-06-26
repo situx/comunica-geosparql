@@ -1300,9 +1300,9 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - The offset into the array.
      * @return {Vector2} A reference to this vector.
      */
-    fromArray(array, offset = 0) {
-      this.x = array[offset];
-      this.y = array[offset + 1];
+    fromArray(array, offset2 = 0) {
+      this.x = array[offset2];
+      this.y = array[offset2 + 1];
       return this;
     }
     /**
@@ -1313,9 +1313,9 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - Index of the first element in the array.
      * @return {Array<number>} The vector components.
      */
-    toArray(array = [], offset = 0) {
-      array[offset] = this.x;
-      array[offset + 1] = this.y;
+    toArray(array = [], offset2 = 0) {
+      array[offset2] = this.x;
+      array[offset2 + 1] = this.y;
       return array;
     }
     /**
@@ -1918,11 +1918,11 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - The offset into the array.
      * @return {Quaternion} A reference to this quaternion.
      */
-    fromArray(array, offset = 0) {
-      this._x = array[offset];
-      this._y = array[offset + 1];
-      this._z = array[offset + 2];
-      this._w = array[offset + 3];
+    fromArray(array, offset2 = 0) {
+      this._x = array[offset2];
+      this._y = array[offset2 + 1];
+      this._z = array[offset2 + 2];
+      this._w = array[offset2 + 3];
       this._onChangeCallback();
       return this;
     }
@@ -1934,11 +1934,11 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - Index of the first element in the array.
      * @return {Array<number>} The quaternion components.
      */
-    toArray(array = [], offset = 0) {
-      array[offset] = this._x;
-      array[offset + 1] = this._y;
-      array[offset + 2] = this._z;
-      array[offset + 3] = this._w;
+    toArray(array = [], offset2 = 0) {
+      array[offset2] = this._x;
+      array[offset2 + 1] = this._y;
+      array[offset2 + 2] = this._z;
+      array[offset2 + 3] = this._w;
       return array;
     }
     /**
@@ -2817,10 +2817,10 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - The offset into the array.
      * @return {Vector3} A reference to this vector.
      */
-    fromArray(array, offset = 0) {
-      this.x = array[offset];
-      this.y = array[offset + 1];
-      this.z = array[offset + 2];
+    fromArray(array, offset2 = 0) {
+      this.x = array[offset2];
+      this.y = array[offset2 + 1];
+      this.z = array[offset2 + 2];
       return this;
     }
     /**
@@ -2831,10 +2831,10 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - Index of the first element in the array.
      * @return {Array<number>} The vector components.
      */
-    toArray(array = [], offset = 0) {
-      array[offset] = this.x;
-      array[offset + 1] = this.y;
-      array[offset + 2] = this.z;
+    toArray(array = [], offset2 = 0) {
+      array[offset2] = this.x;
+      array[offset2 + 1] = this.y;
+      array[offset2 + 2] = this.z;
       return array;
     }
     /**
@@ -3325,9 +3325,9 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - Index of the first element in the array.
      * @return {Matrix3} A reference to this matrix.
      */
-    fromArray(array, offset = 0) {
+    fromArray(array, offset2 = 0) {
       for (let i = 0; i < 9; i++) {
-        this.elements[i] = array[i + offset];
+        this.elements[i] = array[i + offset2];
       }
       return this;
     }
@@ -3339,17 +3339,17 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - Index of the first element in the array.
      * @return {Array<number>} The matrix elements in column-major order.
      */
-    toArray(array = [], offset = 0) {
+    toArray(array = [], offset2 = 0) {
       const te = this.elements;
-      array[offset] = te[0];
-      array[offset + 1] = te[1];
-      array[offset + 2] = te[2];
-      array[offset + 3] = te[3];
-      array[offset + 4] = te[4];
-      array[offset + 5] = te[5];
-      array[offset + 6] = te[6];
-      array[offset + 7] = te[7];
-      array[offset + 8] = te[8];
+      array[offset2] = te[0];
+      array[offset2 + 1] = te[1];
+      array[offset2 + 2] = te[2];
+      array[offset2 + 3] = te[3];
+      array[offset2 + 4] = te[4];
+      array[offset2 + 5] = te[5];
+      array[offset2 + 6] = te[6];
+      array[offset2 + 7] = te[7];
+      array[offset2 + 8] = te[8];
       return array;
     }
     /**
@@ -4665,11 +4665,11 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - The offset into the array.
      * @return {Vector4} A reference to this vector.
      */
-    fromArray(array, offset = 0) {
-      this.x = array[offset];
-      this.y = array[offset + 1];
-      this.z = array[offset + 2];
-      this.w = array[offset + 3];
+    fromArray(array, offset2 = 0) {
+      this.x = array[offset2];
+      this.y = array[offset2 + 1];
+      this.z = array[offset2 + 2];
+      this.w = array[offset2 + 3];
       return this;
     }
     /**
@@ -4680,11 +4680,11 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - Index of the first element in the array.
      * @return {Array<number>} The vector components.
      */
-    toArray(array = [], offset = 0) {
-      array[offset] = this.x;
-      array[offset + 1] = this.y;
-      array[offset + 2] = this.z;
-      array[offset + 3] = this.w;
+    toArray(array = [], offset2 = 0) {
+      array[offset2] = this.x;
+      array[offset2 + 1] = this.y;
+      array[offset2 + 2] = this.z;
+      array[offset2 + 3] = this.w;
       return array;
     }
     /**
@@ -6076,9 +6076,9 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - Index of the first element in the array.
      * @return {Matrix4} A reference to this matrix.
      */
-    fromArray(array, offset = 0) {
+    fromArray(array, offset2 = 0) {
       for (let i = 0; i < 16; i++) {
-        this.elements[i] = array[i + offset];
+        this.elements[i] = array[i + offset2];
       }
       return this;
     }
@@ -6090,24 +6090,24 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - Index of the first element in the array.
      * @return {Array<number>} The matrix elements in column-major order.
      */
-    toArray(array = [], offset = 0) {
+    toArray(array = [], offset2 = 0) {
       const te = this.elements;
-      array[offset] = te[0];
-      array[offset + 1] = te[1];
-      array[offset + 2] = te[2];
-      array[offset + 3] = te[3];
-      array[offset + 4] = te[4];
-      array[offset + 5] = te[5];
-      array[offset + 6] = te[6];
-      array[offset + 7] = te[7];
-      array[offset + 8] = te[8];
-      array[offset + 9] = te[9];
-      array[offset + 10] = te[10];
-      array[offset + 11] = te[11];
-      array[offset + 12] = te[12];
-      array[offset + 13] = te[13];
-      array[offset + 14] = te[14];
-      array[offset + 15] = te[15];
+      array[offset2] = te[0];
+      array[offset2 + 1] = te[1];
+      array[offset2 + 2] = te[2];
+      array[offset2 + 3] = te[3];
+      array[offset2 + 4] = te[4];
+      array[offset2 + 5] = te[5];
+      array[offset2 + 6] = te[6];
+      array[offset2 + 7] = te[7];
+      array[offset2 + 8] = te[8];
+      array[offset2 + 9] = te[9];
+      array[offset2 + 10] = te[10];
+      array[offset2 + 11] = te[11];
+      array[offset2 + 12] = te[12];
+      array[offset2 + 13] = te[13];
+      array[offset2 + 14] = te[14];
+      array[offset2 + 15] = te[15];
       return array;
     }
   };
@@ -6377,11 +6377,11 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - Index of the first element in the array.
      * @return {Array<number,number,number,string>} The Euler components.
      */
-    toArray(array = [], offset = 0) {
-      array[offset] = this._x;
-      array[offset + 1] = this._y;
-      array[offset + 2] = this._z;
-      array[offset + 3] = this._order;
+    toArray(array = [], offset2 = 0) {
+      array[offset2] = this._x;
+      array[offset2 + 1] = this._y;
+      array[offset2 + 2] = this._z;
+      array[offset2 + 3] = this._order;
       return array;
     }
     _onChange(callback) {
@@ -8363,10 +8363,10 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - The offset into the array.
      * @return {Color} A reference to this color.
      */
-    fromArray(array, offset = 0) {
-      this.r = array[offset];
-      this.g = array[offset + 1];
-      this.b = array[offset + 2];
+    fromArray(array, offset2 = 0) {
+      this.r = array[offset2];
+      this.g = array[offset2 + 1];
+      this.b = array[offset2 + 2];
       return this;
     }
     /**
@@ -8377,10 +8377,10 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - Index of the first element in the array.
      * @return {Array<number>} The color components.
      */
-    toArray(array = [], offset = 0) {
-      array[offset] = this.r;
-      array[offset + 1] = this.g;
-      array[offset + 2] = this.b;
+    toArray(array = [], offset2 = 0) {
+      array[offset2] = this.r;
+      array[offset2 + 1] = this.g;
+      array[offset2 + 2] = this.b;
       return array;
     }
     /**
@@ -9301,9 +9301,9 @@ var Yasgui3D = (() => {
      * @param {Vector3} offset - The offset that should be used to translate the bounding box.
      * @return {Box3} A reference to this bounding box.
      */
-    translate(offset) {
-      this.min.add(offset);
-      this.max.add(offset);
+    translate(offset2) {
+      this.min.add(offset2);
+      this.max.add(offset2);
       return this;
     }
     /**
@@ -9561,8 +9561,8 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - The offset in this buffer attribute's array.
      * @return {BufferAttribute} A reference to this instance.
      */
-    set(value, offset = 0) {
-      this.array.set(value, offset);
+    set(value, offset2 = 0) {
+      this.array.set(value, offset2);
       return this;
     }
     /**
@@ -10000,8 +10000,8 @@ var Yasgui3D = (() => {
      * @param {Vector3} offset - The offset.
      * @return {Sphere} A reference to this sphere.
      */
-    translate(offset) {
-      this.center.add(offset);
+    translate(offset2) {
+      this.center.add(offset2);
       return this;
     }
     /**
@@ -10957,8 +10957,8 @@ var Yasgui3D = (() => {
      * @param {number} [offset=0] - The offset in this interleaved buffer's array.
      * @return {InterleavedBuffer} A reference to this instance.
      */
-    set(value, offset = 0) {
-      this.array.set(value, offset);
+    set(value, offset2 = 0) {
+      this.array.set(value, offset2);
       return this;
     }
     /**
@@ -11028,12 +11028,12 @@ var Yasgui3D = (() => {
      * @param {number} offset - The attribute offset into the buffer.
      * @param {boolean} [normalized=false] - Whether the data are normalized or not.
      */
-    constructor(interleavedBuffer, itemSize, offset, normalized = false) {
+    constructor(interleavedBuffer, itemSize, offset2, normalized = false) {
       this.isInterleavedBufferAttribute = true;
       this.name = "";
       this.data = interleavedBuffer;
       this.itemSize = itemSize;
-      this.offset = offset;
+      this.offset = offset2;
       this.normalized = normalized;
     }
     /**
@@ -13317,8 +13317,8 @@ var Yasgui3D = (() => {
      * @param {Vector3} offset - The offset vector.
      * @return {Plane} A reference to this plane.
      */
-    translate(offset) {
-      this.constant -= offset.dot(this.normal);
+    translate(offset2) {
+      this.constant -= offset2.dot(this.normal);
       return this;
     }
     /**
@@ -13451,8 +13451,8 @@ var Yasgui3D = (() => {
      */
     intersectsSprite(sprite) {
       _sphere$3.center.set(0, 0, 0);
-      const offset = _defaultSpriteCenter.distanceTo(sprite.center);
-      _sphere$3.radius = 0.7071067811865476 + offset;
+      const offset2 = _defaultSpriteCenter.distanceTo(sprite.center);
+      _sphere$3.radius = 0.7071067811865476 + offset2;
       _sphere$3.applyMatrix4(sprite.matrixWorld);
       return this.intersectsSphere(_sphere$3);
     }
@@ -17052,9 +17052,9 @@ var Yasgui3D = (() => {
      * @return {TypedArray} The result buffer.
      */
     copySampleValue_(index) {
-      const result = this.resultBuffer, values = this.sampleValues, stride = this.valueSize, offset = index * stride;
+      const result = this.resultBuffer, values = this.sampleValues, stride = this.valueSize, offset2 = index * stride;
       for (let i = 0; i !== stride; ++i) {
-        result[i] = values[offset + i];
+        result[i] = values[offset2 + i];
       }
       return result;
     }
@@ -17515,9 +17515,9 @@ var Yasgui3D = (() => {
         const timeNext = times[i + 1];
         if (time !== timeNext && (i !== 1 || time !== times[0])) {
           if (!smoothInterpolation) {
-            const offset = i * stride, offsetP = offset - stride, offsetN = offset + stride;
+            const offset2 = i * stride, offsetP = offset2 - stride, offsetN = offset2 + stride;
             for (let j = 0; j !== stride; ++j) {
-              const value = values[offset + j];
+              const value = values[offset2 + j];
               if (value !== values[offsetP + j] || value !== values[offsetN + j]) {
                 keep = true;
                 break;
@@ -17634,9 +17634,9 @@ var Yasgui3D = (() => {
     }
     interpolate_(i1, t0, t, t1) {
       const result = this.resultBuffer, values = this.sampleValues, stride = this.valueSize, alpha = (t - t0) / (t1 - t0);
-      let offset = i1 * stride;
-      for (let end = offset + stride; offset !== end; offset += 4) {
-        Quaternion.slerpFlat(result, 0, values, offset - stride, values, offset, alpha);
+      let offset2 = i1 * stride;
+      for (let end = offset2 + stride; offset2 !== end; offset2 += 4) {
+        Quaternion.slerpFlat(result, 0, values, offset2 - stride, values, offset2, alpha);
       }
       return result;
     }
@@ -19776,15 +19776,15 @@ var Yasgui3D = (() => {
       this._targetGroup = targetGroup;
       this._bindings = targetGroup.subscribe_(path, parsedPath);
     }
-    getValue(array, offset) {
+    getValue(array, offset2) {
       this.bind();
       const firstValidIndex = this._targetGroup.nCachedObjects_, binding = this._bindings[firstValidIndex];
-      if (binding !== void 0) binding.getValue(array, offset);
+      if (binding !== void 0) binding.getValue(array, offset2);
     }
-    setValue(array, offset) {
+    setValue(array, offset2) {
       const bindings = this._bindings;
       for (let i = this._targetGroup.nCachedObjects_, n = bindings.length; i !== n; ++i) {
-        bindings[i].setValue(array, offset);
+        bindings[i].setValue(array, offset2);
       }
     }
     bind() {
@@ -19931,85 +19931,85 @@ var Yasgui3D = (() => {
     _setValue_unavailable() {
     }
     // Getters
-    _getValue_direct(buffer, offset) {
-      buffer[offset] = this.targetObject[this.propertyName];
+    _getValue_direct(buffer, offset2) {
+      buffer[offset2] = this.targetObject[this.propertyName];
     }
-    _getValue_array(buffer, offset) {
+    _getValue_array(buffer, offset2) {
       const source = this.resolvedProperty;
       for (let i = 0, n = source.length; i !== n; ++i) {
-        buffer[offset++] = source[i];
+        buffer[offset2++] = source[i];
       }
     }
-    _getValue_arrayElement(buffer, offset) {
-      buffer[offset] = this.resolvedProperty[this.propertyIndex];
+    _getValue_arrayElement(buffer, offset2) {
+      buffer[offset2] = this.resolvedProperty[this.propertyIndex];
     }
-    _getValue_toArray(buffer, offset) {
-      this.resolvedProperty.toArray(buffer, offset);
+    _getValue_toArray(buffer, offset2) {
+      this.resolvedProperty.toArray(buffer, offset2);
     }
     // Direct
-    _setValue_direct(buffer, offset) {
-      this.targetObject[this.propertyName] = buffer[offset];
+    _setValue_direct(buffer, offset2) {
+      this.targetObject[this.propertyName] = buffer[offset2];
     }
-    _setValue_direct_setNeedsUpdate(buffer, offset) {
-      this.targetObject[this.propertyName] = buffer[offset];
+    _setValue_direct_setNeedsUpdate(buffer, offset2) {
+      this.targetObject[this.propertyName] = buffer[offset2];
       this.targetObject.needsUpdate = true;
     }
-    _setValue_direct_setMatrixWorldNeedsUpdate(buffer, offset) {
-      this.targetObject[this.propertyName] = buffer[offset];
+    _setValue_direct_setMatrixWorldNeedsUpdate(buffer, offset2) {
+      this.targetObject[this.propertyName] = buffer[offset2];
       this.targetObject.matrixWorldNeedsUpdate = true;
     }
     // EntireArray
-    _setValue_array(buffer, offset) {
+    _setValue_array(buffer, offset2) {
       const dest = this.resolvedProperty;
       for (let i = 0, n = dest.length; i !== n; ++i) {
-        dest[i] = buffer[offset++];
+        dest[i] = buffer[offset2++];
       }
     }
-    _setValue_array_setNeedsUpdate(buffer, offset) {
+    _setValue_array_setNeedsUpdate(buffer, offset2) {
       const dest = this.resolvedProperty;
       for (let i = 0, n = dest.length; i !== n; ++i) {
-        dest[i] = buffer[offset++];
+        dest[i] = buffer[offset2++];
       }
       this.targetObject.needsUpdate = true;
     }
-    _setValue_array_setMatrixWorldNeedsUpdate(buffer, offset) {
+    _setValue_array_setMatrixWorldNeedsUpdate(buffer, offset2) {
       const dest = this.resolvedProperty;
       for (let i = 0, n = dest.length; i !== n; ++i) {
-        dest[i] = buffer[offset++];
+        dest[i] = buffer[offset2++];
       }
       this.targetObject.matrixWorldNeedsUpdate = true;
     }
     // ArrayElement
-    _setValue_arrayElement(buffer, offset) {
-      this.resolvedProperty[this.propertyIndex] = buffer[offset];
+    _setValue_arrayElement(buffer, offset2) {
+      this.resolvedProperty[this.propertyIndex] = buffer[offset2];
     }
-    _setValue_arrayElement_setNeedsUpdate(buffer, offset) {
-      this.resolvedProperty[this.propertyIndex] = buffer[offset];
+    _setValue_arrayElement_setNeedsUpdate(buffer, offset2) {
+      this.resolvedProperty[this.propertyIndex] = buffer[offset2];
       this.targetObject.needsUpdate = true;
     }
-    _setValue_arrayElement_setMatrixWorldNeedsUpdate(buffer, offset) {
-      this.resolvedProperty[this.propertyIndex] = buffer[offset];
+    _setValue_arrayElement_setMatrixWorldNeedsUpdate(buffer, offset2) {
+      this.resolvedProperty[this.propertyIndex] = buffer[offset2];
       this.targetObject.matrixWorldNeedsUpdate = true;
     }
     // HasToFromArray
-    _setValue_fromArray(buffer, offset) {
-      this.resolvedProperty.fromArray(buffer, offset);
+    _setValue_fromArray(buffer, offset2) {
+      this.resolvedProperty.fromArray(buffer, offset2);
     }
-    _setValue_fromArray_setNeedsUpdate(buffer, offset) {
-      this.resolvedProperty.fromArray(buffer, offset);
+    _setValue_fromArray_setNeedsUpdate(buffer, offset2) {
+      this.resolvedProperty.fromArray(buffer, offset2);
       this.targetObject.needsUpdate = true;
     }
-    _setValue_fromArray_setMatrixWorldNeedsUpdate(buffer, offset) {
-      this.resolvedProperty.fromArray(buffer, offset);
+    _setValue_fromArray_setMatrixWorldNeedsUpdate(buffer, offset2) {
+      this.resolvedProperty.fromArray(buffer, offset2);
       this.targetObject.matrixWorldNeedsUpdate = true;
     }
-    _getValue_unbound(targetArray, offset) {
+    _getValue_unbound(targetArray, offset2) {
       this.bind();
-      this.getValue(targetArray, offset);
+      this.getValue(targetArray, offset2);
     }
-    _setValue_unbound(sourceArray, offset) {
+    _setValue_unbound(sourceArray, offset2) {
       this.bind();
-      this.setValue(sourceArray, offset);
+      this.setValue(sourceArray, offset2);
     }
     /**
      * Creates a getter / setter pair for the property tracked by this binding.
@@ -21747,11 +21747,11 @@ var Yasgui3D = (() => {
         }
       }
     }
-    function vertexAttribPointer(index, size, type, normalized, stride, offset, integer) {
+    function vertexAttribPointer(index, size, type, normalized, stride, offset2, integer) {
       if (integer === true) {
-        gl.vertexAttribIPointer(index, size, type, stride, offset);
+        gl.vertexAttribIPointer(index, size, type, stride, offset2);
       } else {
-        gl.vertexAttribPointer(index, size, type, normalized, stride, offset);
+        gl.vertexAttribPointer(index, size, type, normalized, stride, offset2);
       }
     }
     function setupVertexAttributes(object, material2, program, geometry) {
@@ -21779,7 +21779,7 @@ var Yasgui3D = (() => {
             if (geometryAttribute.isInterleavedBufferAttribute) {
               const data = geometryAttribute.data;
               const stride = data.stride;
-              const offset = geometryAttribute.offset;
+              const offset2 = geometryAttribute.offset;
               if (data.isInstancedInterleavedBuffer) {
                 for (let i = 0; i < programAttribute.locationSize; i++) {
                   enableAttributeAndDivisor(programAttribute.location + i, data.meshPerAttribute);
@@ -21800,7 +21800,7 @@ var Yasgui3D = (() => {
                   type,
                   normalized,
                   stride * bytesPerElement,
-                  (offset + size / programAttribute.locationSize * i) * bytesPerElement,
+                  (offset2 + size / programAttribute.locationSize * i) * bytesPerElement,
                   integer
                 );
               }
@@ -23494,29 +23494,29 @@ var Yasgui3D = (() => {
           const morphTarget = morphTargets[i];
           const morphNormal = morphNormals[i];
           const morphColor = morphColors[i];
-          const offset = width * height * 4 * i;
+          const offset2 = width * height * 4 * i;
           for (let j = 0; j < morphTarget.count; j++) {
             const stride = j * vertexDataStride;
             if (hasMorphPosition === true) {
               morph.fromBufferAttribute(morphTarget, j);
-              buffer[offset + stride + 0] = morph.x;
-              buffer[offset + stride + 1] = morph.y;
-              buffer[offset + stride + 2] = morph.z;
-              buffer[offset + stride + 3] = 0;
+              buffer[offset2 + stride + 0] = morph.x;
+              buffer[offset2 + stride + 1] = morph.y;
+              buffer[offset2 + stride + 2] = morph.z;
+              buffer[offset2 + stride + 3] = 0;
             }
             if (hasMorphNormals === true) {
               morph.fromBufferAttribute(morphNormal, j);
-              buffer[offset + stride + 4] = morph.x;
-              buffer[offset + stride + 5] = morph.y;
-              buffer[offset + stride + 6] = morph.z;
-              buffer[offset + stride + 7] = 0;
+              buffer[offset2 + stride + 4] = morph.x;
+              buffer[offset2 + stride + 5] = morph.y;
+              buffer[offset2 + stride + 6] = morph.z;
+              buffer[offset2 + stride + 7] = 0;
             }
             if (hasMorphColors === true) {
               morph.fromBufferAttribute(morphColor, j);
-              buffer[offset + stride + 8] = morph.x;
-              buffer[offset + stride + 9] = morph.y;
-              buffer[offset + stride + 10] = morph.z;
-              buffer[offset + stride + 11] = morphColor.itemSize === 4 ? morph.w : 1;
+              buffer[offset2 + stride + 8] = morph.x;
+              buffer[offset2 + stride + 9] = morph.y;
+              buffer[offset2 + stride + 10] = morph.z;
+              buffer[offset2 + stride + 11] = morphColor.itemSize === 4 ? morph.w : 1;
             }
           }
         }
@@ -23785,9 +23785,9 @@ var Yasgui3D = (() => {
     }
     if (nBlocks !== 0) {
       firstElem.toArray(r, 0);
-      for (let i = 1, offset = 0; i !== nBlocks; ++i) {
-        offset += blockSize;
-        array[i].toArray(r, offset);
+      for (let i = 1, offset2 = 0; i !== nBlocks; ++i) {
+        offset2 += blockSize;
+        array[i].toArray(r, offset2);
       }
     }
     return r;
@@ -29579,7 +29579,7 @@ void main() {
         for (let j = 0, jl = uniformArray.length; j < jl; j++) {
           const uniform = uniformArray[j];
           if (hasUniformChanged(uniform, i, j, cache) === true) {
-            const offset = uniform.__offset;
+            const offset2 = uniform.__offset;
             const values = Array.isArray(uniform.value) ? uniform.value : [uniform.value];
             let arrayOffset = 0;
             for (let k = 0; k < values.length; k++) {
@@ -29587,7 +29587,7 @@ void main() {
               const info2 = getUniformSize(value);
               if (typeof value === "number" || typeof value === "boolean") {
                 uniform.__data[0] = value;
-                gl.bufferSubData(gl.UNIFORM_BUFFER, offset + arrayOffset, uniform.__data);
+                gl.bufferSubData(gl.UNIFORM_BUFFER, offset2 + arrayOffset, uniform.__data);
               } else if (value.isMatrix3) {
                 uniform.__data[0] = value.elements[0];
                 uniform.__data[1] = value.elements[1];
@@ -29606,7 +29606,7 @@ void main() {
                 arrayOffset += info2.storage / Float32Array.BYTES_PER_ELEMENT;
               }
             }
-            gl.bufferSubData(gl.UNIFORM_BUFFER, offset, uniform.__data);
+            gl.bufferSubData(gl.UNIFORM_BUFFER, offset2, uniform.__data);
           }
         }
       }
@@ -29640,7 +29640,7 @@ void main() {
     }
     function prepareUniformsGroup(uniformsGroup) {
       const uniforms = uniformsGroup.uniforms;
-      let offset = 0;
+      let offset2 = 0;
       const chunkSize = 16;
       for (let i = 0, l = uniforms.length; i < l; i++) {
         const uniformArray = Array.isArray(uniforms[i]) ? uniforms[i] : [uniforms[i]];
@@ -29650,22 +29650,22 @@ void main() {
           for (let k = 0, kl = values.length; k < kl; k++) {
             const value = values[k];
             const info2 = getUniformSize(value);
-            const chunkOffset2 = offset % chunkSize;
+            const chunkOffset2 = offset2 % chunkSize;
             const chunkPadding = chunkOffset2 % info2.boundary;
             const chunkStart = chunkOffset2 + chunkPadding;
-            offset += chunkPadding;
+            offset2 += chunkPadding;
             if (chunkStart !== 0 && chunkSize - chunkStart < info2.storage) {
-              offset += chunkSize - chunkStart;
+              offset2 += chunkSize - chunkStart;
             }
             uniform.__data = new Float32Array(info2.storage / Float32Array.BYTES_PER_ELEMENT);
-            uniform.__offset = offset;
-            offset += info2.storage;
+            uniform.__offset = offset2;
+            offset2 += info2.storage;
           }
         }
       }
-      const chunkOffset = offset % chunkSize;
-      if (chunkOffset > 0) offset += chunkSize - chunkOffset;
-      uniformsGroup.__size = offset;
+      const chunkOffset = offset2 % chunkSize;
+      if (chunkOffset > 0) offset2 += chunkSize - chunkOffset;
+      uniformsGroup.__size = offset2;
       uniformsGroup.__cache = {};
       return this;
     }
@@ -33809,9 +33809,9 @@ void main() {
       super(parameterPositions, sampleValues, sampleSize, resultBuffer);
     }
     copySampleValue_(index) {
-      const result = this.resultBuffer, values = this.sampleValues, valueSize = this.valueSize, offset = index * valueSize * 3 + valueSize;
+      const result = this.resultBuffer, values = this.sampleValues, valueSize = this.valueSize, offset2 = index * valueSize * 3 + valueSize;
       for (let i = 0; i !== valueSize; i++) {
-        result[i] = values[offset + i];
+        result[i] = values[offset2 + i];
       }
       return result;
     }
@@ -36411,9 +36411,9 @@ void main() {
         }
         return true;
       }
-      function matchDataViewAt(query, reader, offset) {
+      function matchDataViewAt(query, reader, offset2) {
         for (let i = 0, il = query.length; i < il; i++) {
-          if (query[i] !== reader.getUint8(offset + i)) return false;
+          if (query[i] !== reader.getUint8(offset2 + i)) return false;
         }
         return true;
       }
@@ -37477,15 +37477,15 @@ void main() {
       return mult;
     }
     _snap(value) {
-      let offset = 0;
+      let offset2 = 0;
       if (this._hasMin) {
-        offset = this._min;
+        offset2 = this._min;
       } else if (this._hasMax) {
-        offset = this._max;
+        offset2 = this._max;
       }
-      value -= offset;
+      value -= offset2;
       value = Math.round(value / this._step) * this._step;
-      value += offset;
+      value += offset2;
       value = parseFloat(value.toPrecision(15));
       return value;
     }
@@ -38701,19 +38701,17 @@ void main() {
       const fitHeightDistance = maxSize / (2 * Math.atan(Math.PI * camera.fov / 360));
       const fitWidthDistance = fitHeightDistance / camera.aspect;
       const distance = fitOffset * Math.max(fitHeightDistance, fitWidthDistance);
+      const fov2 = camera.fov * (Math.PI / 180);
+      let cameraZ = Math.abs(maxSize / 4 * Math.tan(fov2 * 2));
       const direction = controls.target.clone().sub(camera.position).normalize().multiplyScalar(distance);
       controls.maxDistance = distance * 10;
       controls.target.copy(this.center);
       camera.near = distance / 100;
       camera.far = distance * 100;
       camera.updateProjectionMatrix();
-      camera.position.set(
-        this.center.x * camera.far / camera.near,
-        this.center.y * camera.far / camera.near,
-        this.center.z * camera.far / camera.near
-      );
+      cameraZ *= offset;
+      camera.position.z = cameraZ;
       camera.lookAt(this.center);
-      camera.position.copy(controls.target).sub(direction);
     }
     async initThreeJS(domelement, verts, meshurls) {
       let loader;
