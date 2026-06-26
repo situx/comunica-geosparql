@@ -38450,6 +38450,7 @@ void main() {
     color: 16711680,
     flatShading: true,
     vertexColors: true,
+    side: DoubleSide,
     wireframe: false,
     emissive: new Color(1, 1, 1),
     emissiveIntensity: 0.8
